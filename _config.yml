@@ -5,7 +5,7 @@ plugins:
 
 locale: en-US
 title: Data Beta
-description: A site with my ideas and solutions.
+description: Presence Is A State Of Mind.
 baseurl: #
 url: "https://databeta.org"
 logo: # path of site logo, e.g. "/images/logo.png"
@@ -80,7 +80,6 @@ author:
   name: Joseph Walker
   picture:
   email: jpwalker625@gmail.com
-  twitter: tictacjoe
   links:
     - title:
       url:
@@ -91,4 +90,14 @@ footer_links:
   - title: Feed
     url: atom.xml
     icon: fas fa-rss-square
+  - title: Github
+    url: https://github.com/jpwalker625
+    icon: fab fa-github
+  - title: Instagram
+    url: https://instagram.com/tictacjoe
+    icon: fab fa-instagram
+  - title: LinkedIn
+    url: https://www.linkedin.com/in/jpwalker625/
+    icon: fab fa-linkedin
+  
 
