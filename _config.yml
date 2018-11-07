@@ -4,7 +4,7 @@ remote_theme: "mmistakes/so-simple-theme"
 locale: en-US
 title: Data Beta
 description: Presence Is A State Of Mind.
-baseurl: #
+baseurl: ""#
 url: "https://databeta.org"
 logo: # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
@@ -28,7 +28,7 @@ liquid:
 
 # Build settings
 permalink: /:categories/:title/
-encoding: UTF-8
+encoding: utf-8
 markdown: kramdown
 exclude: ['*.Rmd']
 feed:
