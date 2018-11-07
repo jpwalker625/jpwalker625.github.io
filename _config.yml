@@ -28,7 +28,9 @@ liquid:
 
 # Build settings
 permalink: /:categories/:title/
+encoding: utf-8
 markdown: kramdown
+exclude: ['*.Rmd']
 feed:
   path: atom.xml
 
@@ -57,6 +59,7 @@ tag_archive_path: "/tags/#"
 #   - vendor/ruby/
 
 
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
@@ -78,10 +81,10 @@ author:
   name: Joseph Walker
   picture:
   email: jpwalker625@gmail.com
-  links:
-    - title:
-      url:
-      icon:
+  links: false
+   # - title:
+   #   url:
+   #   icon:
 
 # Footer Links
 footer_links:
@@ -97,3 +100,4 @@ footer_links:
   - title: LinkedIn
     url: https://www.linkedin.com/in/jpwalker625/
     icon: fab fa-linkedin
+    

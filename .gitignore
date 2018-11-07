@@ -3,7 +3,6 @@ _site
 .sass-cache
 .jekyll-metadata
 _asset_bundler_cache
-_site
 .bundle
 .DS_Store
 .jekyll-metadata
