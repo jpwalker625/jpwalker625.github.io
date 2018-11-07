@@ -28,7 +28,7 @@ liquid:
 
 # Build settings
 permalink: /:categories/:title/
-encoding: utf-8
+encoding: UTF-8
 markdown: kramdown
 exclude: ['*.Rmd']
 feed:
