@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 _site
 .sass-cache
 .jekyll-metadata
-=======
 _asset_bundler_cache
 _site
 .bundle
@@ -16,4 +15,7 @@ codekit-config.json
 Gemfile.lock
 node_modules
 npm-debug.log*
->>>>>>> 48e3542541dc4efa773904aaad31adbdf4f67495
+
+.Rproj.user
+.Rhistory
+.RData

@@ -1,7 +1,5 @@
 # Build settings
 remote_theme: "mmistakes/so-simple-theme"
-plugins:
-  - jekyll-feed
 
 locale: en-US
 title: Data Beta
@@ -99,5 +97,3 @@ footer_links:
   - title: LinkedIn
     url: https://www.linkedin.com/in/jpwalker625/
     icon: fab fa-linkedin
-  
-
