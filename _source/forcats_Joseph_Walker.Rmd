@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-###Defining Factors
+### Defining Factors
 The `forcats` package is part of the tidyverse and is useful for dealing with factors. Factors are simply categorical variables, useful for controlling the levels and order of a vector.
 
 Categoricalv or discrete variables, as opposed to continuous variables, are often qualitiative and can take on a finite number of values.
@@ -54,7 +54,7 @@ summary(colors)
 #As factors, each color becomes a distinct group and summarized separately.
 ```
 
-###The Forcats Package
+### The Forcats Package
 As useful as factors are, they can be quite a pain to work with at times. Luckily, `forcats` has functions that allow you to manipulate factors. 
 
 
@@ -68,7 +68,7 @@ library(tidyverse)
 library(forcats)
 ```
 
-###Function: Factor Recode
+### Function: Factor Recode
 One useful function of `forcats` is `fct_recode`. This allows you to change the levels (or name/identity) of a factor. Here's an example:
 
 ```{r change level values}
@@ -89,7 +89,7 @@ ggplot(airquality, aes(Month, Temp)) +
   ggtitle(label = "Daily Temperatures Aggregated by Month")
 ```
 
-###The Factor Reverse Function
+### The Factor Reverse Function
 If you just want to reverse the order, there's the `fct_rev` function. You can even use it in line when defining your aesthetics in ggplot like so:
 ```{r reverse the order}
 
@@ -99,7 +99,7 @@ ggplot(airquality, aes(fct_rev(Month), Temp)) +
   ggtitle(label = "Our plot now has the x-axis in reverse order")
 ```
 
-###The Factor Relevel Function
+### The Factor Relevel Function
 Another useful function is `fct_relevel`. This function allows us to change any number of levels to any position.
 ```{r change level position}
 airquality$Month <- fct_relevel(airquality$Month, 'Sept', 'July', 'May', 'Aug', 'June')
@@ -113,7 +113,7 @@ ggplot(airquality, aes(Month, Temp)) +
   ggtitle(label = "Notice how the order of the level 'Month' has changed")
 ```
 
-###The Factor Reorder Function
+### The Factor Reorder Function
 
 And finally, it is often useful to reorder the factor in a way that is useful for visualization. For this, we can use the `fct_reorder` function.
 

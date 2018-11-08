@@ -1,11 +1,10 @@
 ---
-title: An Introduction to `forcats`
-author: Joseph Walker
-date: 'March 22, 2017'
-output:
-  html_document:
-    toc: 'yes'
-published: true
+title: "An Introduction to `forcats`"
+author: "Joseph Walker"
+date: "March 22, 2017"
+output: 
+  html_document: 
+    toc: yes
 ---
 
 
@@ -263,3 +262,6 @@ ggplot(mtcars, aes(mpg, fct_reorder(f = model, x = mpg))) +
 ```
 
 ![plot of chunk fct_reorder](/figure/source/forcats_Joseph_Walker/fct_reorder-1.png)
+
+
+
