@@ -1,5 +1,10 @@
 ---
 title: "An Introduction to `forcats`"
+author: "Joseph Walker"
+date: "March 22, 2017"
+output: 
+  html_document: 
+    toc: yes
 ---
 
 
