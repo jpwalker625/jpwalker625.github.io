@@ -1,0 +1,16 @@
+
+GitHub Side
+Setup your github pages site
+
+Jekyll Side
+Install Jekyll
+Add the necessary files (Build.R, BuildOne.R .rprofile) - Can use the knitr-jekyll theme from yihui
+Customize your theme (DIY or find one)
+
+R Side
+Install Blogdown, knitr, servr
+
+Add Source .RMD files to _source
+run servr::jekyll() to knit the files to .md and automatically add to _posts. 
+
+Done.
