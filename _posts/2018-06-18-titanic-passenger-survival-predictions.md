@@ -1,20 +1,12 @@
 ---
-title: "Titanic Passenger Survival Predictions"
-author: "Joseph Walker"
-date: '2018-06-18'
-slug: titanic-passenger-survival-predictions
+title: Titanic Passenger Survival Predictions
+author: JW
 tags:
-- data science
-- datasets
-- kaggle
 - logistic regression
 - machine leaning
-- predictions
-- R
-categories:
-- data science
 - kaggle
-- logistic regression
+categories:
+- model
 - R
 ---
 
