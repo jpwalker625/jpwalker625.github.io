@@ -1,10 +1,11 @@
 ---
-title: "An Introduction to `forcats`"
-author: "Joseph Walker"
-date: "March 22, 2017"
-output: 
-  html_document: 
-    toc: yes
+title: An Introduction to `forcats`
+author: Joseph Walker
+date: 'March 22, 2017'
+output:
+  html_document:
+    toc: 'yes'
+published: true
 ---
 
 
@@ -12,7 +13,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-###Defining Factors
+### Defining Factors
 The `forcats` package is part of the tidyverse and is useful for dealing with factors. Factors are simply categorical variables, useful for controlling the levels and order of a vector.
 
 Categoricalv or discrete variables, as opposed to continuous variables, are often qualitiative and can take on a finite number of values.
@@ -110,7 +111,7 @@ summary(colors)
 #As factors, each color becomes a distinct group and summarized separately.
 ```
 
-###The Forcats Package
+### The Forcats Package
 As useful as factors are, they can be quite a pain to work with at times. Luckily, `forcats` has functions that allow you to manipulate factors. 
 
 
@@ -125,7 +126,7 @@ library(tidyverse)
 library(forcats)
 ```
 
-###Function: Factor Recode
+### Function: Factor Recode
 One useful function of `forcats` is `fct_recode`. This allows you to change the levels (or name/identity) of a factor. Here's an example:
 
 
@@ -174,7 +175,7 @@ ggplot(airquality, aes(Month, Temp)) +
 
 ![plot of chunk change level values](/figure/source/forcats_Joseph_Walker/change level values-1.png)
 
-###The Factor Reverse Function
+### The Factor Reverse Function
 If you just want to reverse the order, there's the `fct_rev` function. You can even use it in line when defining your aesthetics in ggplot like so:
 
 ```r
@@ -186,7 +187,7 @@ ggplot(airquality, aes(fct_rev(Month), Temp)) +
 
 ![plot of chunk reverse the order](/figure/source/forcats_Joseph_Walker/reverse the order-1.png)
 
-###The Factor Relevel Function
+### The Factor Relevel Function
 Another useful function is `fct_relevel`. This function allows us to change any number of levels to any position.
 
 ```r
@@ -209,7 +210,7 @@ ggplot(airquality, aes(Month, Temp)) +
 
 ![plot of chunk change level position](/figure/source/forcats_Joseph_Walker/change level position-1.png)
 
-###The Factor Reorder Function
+### The Factor Reorder Function
 
 And finally, it is often useful to reorder the factor in a way that is useful for visualization. For this, we can use the `fct_reorder` function.
 
@@ -262,6 +263,3 @@ ggplot(mtcars, aes(mpg, fct_reorder(f = model, x = mpg))) +
 ```
 
 ![plot of chunk fct_reorder](/figure/source/forcats_Joseph_Walker/fct_reorder-1.png)
-
-
-
