@@ -3,7 +3,7 @@ remote_theme: "mmistakes/so-simple-theme"
 
 locale: en-US
 title: Data Beta
-description: Presence Is A State Of Mind.
+description: Solving Problems One Data Set At A Time.
 baseurl: ""#
 url: "https://databeta.org"
 logo: # path of site logo, e.g. "/images/logo.png"
