@@ -14,8 +14,9 @@ tags:
 
 
 
-**This is the first of a three part series on data visualization using the popular `ggplot2` package.**
+## This is the first of a three part series on data visualization using the popular `ggplot2` package.
 
+**Check out [part 2](https://databeta.org/r/visualization/visualizing-data-in-r-with-ggplot2-part-2) or [part 3](https://databeta.org/r/visualization/visualizing-data-in-r-with-ggplot2-part-1) for more!**
 
 # Part 1
 
