@@ -1,6 +1,6 @@
 ---
 title: Visualizing Data In R With ggplot2 (Part 2)
-author: Joseph Walker
+author: JW
 date: '2018-11-27'
 slug: visualizing-data-in-r-with-ggplot2-part-2
 categories:
