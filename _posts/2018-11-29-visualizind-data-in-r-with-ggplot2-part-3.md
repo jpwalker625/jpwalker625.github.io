@@ -1191,11 +1191,14 @@ We can compute the data for a bagplot and plot one using the `aplpack` package.
 # load required package
 library(aplpack)
 
-# Create bagplot of iris dataset: sepal.length vs. sepal.width
-bagplot(x = iris$Petal.Width, y =  iris$Petal.Length)
+# sample the diamonds dataset
+diamonds_subset <- sample_n(tbl = diamonds, size = 500)
+
+# Create bagplot of diamonds dataset: diamonds$carat vs. diamonds$price
+bagplot(x = diamonds_subset$carat, y = diamonds_subset$price)
 
 # Get bagplot stats
-bag <- compute.bagplot(x = iris$Petal.Width, y =  iris$Petal.Length)
+bag <- compute.bagplot(x = diamonds_subset$carat, y = diamonds_subset$price)
 
 # Examine the variables computed in the bag object.
 names(bag)
@@ -1226,17 +1229,13 @@ hull.bag <- data.frame(x = bag$hull.bag[,1], y = bag$hull.bag[,2])
 pxy.outlier <- data.frame(x = bag$pxy.outlier[,1], y = bag$pxy.outlier[,2])
 
 # Finish the ggplot command
-ggplot(iris, aes(x = Petal.Width,  y = Petal.Length)) +
+ggplot(diamonds_subset, aes(x = carat,  y = price)) +
   geom_polygon(data = hull.loop, aes(x = x, y = y), fill = "green") +
-  geom_polygon(data = hull.bag, aes(x = x, y = y), fill = "orange") 
+  geom_polygon(data = hull.bag, aes(x = x, y = y), fill = "orange") +
+  geom_point(data = pxy.outlier, aes(x = x, y = y), col = "purple", pch = 16, cex = 1.5)
 ```
 
 ![plot of chunk unnamed-chunk-35](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-35-1.png)
-
-```r
-# if we had outliers in the dataset we could plot them as well  
-# geom_point(data = pxy.outlier, aes(x = x, y = y), col = "purple", pch = 16, cex = 1.5)
-```
 
 The plot above is a good starting point, but we can do better. In the process, we will learn how to use the `ggproto` function which can be used to make any new layer you can think of and ultimately build your own plots. `ggproto` takes 4 arguments:
 
@@ -1307,7 +1306,7 @@ And finally, we can apply the data to our new function to make the plot
 
 
 ```r
-ggplot(iris, aes(x = Petal.Width,  y = Petal.Length))+
+ggplot(diamonds_subset, aes(x = carat,  y = price))+
   stat_bag(fill = "black")
 ```
 
@@ -1317,7 +1316,7 @@ This custom function is flexible as well. Instead of calling the fill in the sta
 
 
 ```r
-ggplot(iris, aes(x = Petal.Width,  y = Petal.Length, fill = Species))+
+ggplot(diamonds_subset, aes(x = carat,  y = price, fill = clarity ))+
   stat_bag()
 ```
 
