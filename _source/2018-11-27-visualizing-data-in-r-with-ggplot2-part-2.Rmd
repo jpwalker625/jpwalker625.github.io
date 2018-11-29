@@ -12,10 +12,10 @@ tags:
   - tutorials
 ---
 
-```{r setup, include=FALSE}
+```{r setup, warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
-#load required libraries
+# load required libraries
 library(tidyverse)
 library(MASS) #for datasets
 library(forcats)

@@ -12,17 +12,19 @@ tags:
   - tutorials
 ---
 
-```{r setup, include=FALSE}
+```{r setup, warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+# load libraries
 library(tidyverse)
 
 ```
 
 ## This is the first of a three part series on data visualization using the popular `ggplot2` package.
 
-**Check out [part 2](https://databeta.org/r/visualization/visualizing-data-in-r-with-ggplot2-part-2) or [part 3](https://databeta.org/r/visualization/visualizing-data-in-r-with-ggplot2-part-1) for more!**
+**Check out [part 2](https://databeta.org/r/visualization/visualizing-data-in-r-with-ggplot2-part-2) or [part 3](https://databeta.org/r/visualization/visualizing-data-in-r-with-ggplot2-part-3) for more!**
 
-# Part 1
+## Part 1
 
 Data Visualization combines statistics and design to present data in meaningful ways. Good design aids in both the understanding and communication of results. 
 

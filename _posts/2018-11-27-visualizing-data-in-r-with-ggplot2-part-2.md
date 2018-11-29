@@ -13,6 +13,15 @@ tags:
 ---
 
 
+```r
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+# load required libraries
+library(tidyverse)
+library(MASS) #for datasets
+library(forcats)
+library(ggthemes)
+```
 
 ## This is the second of a three part series on data visualization using the popular ggplot2 package. 
 
