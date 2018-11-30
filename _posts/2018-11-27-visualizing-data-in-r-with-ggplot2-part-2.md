@@ -13,15 +13,6 @@ tags:
 ---
 
 
-```r
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-
-# load required libraries
-library(tidyverse)
-library(MASS) #for datasets
-library(forcats)
-library(ggthemes)
-```
 
 ## This is the second of a three part series on data visualization using the popular ggplot2 package. 
 
@@ -36,6 +27,16 @@ In Part 1, we discussed 3 elements of the grammar of graphics: data, aesthetics,
 * Facets 
 * Themes 
 
+Let's begin by loading the required packages.
+
+```r
+# load required packages
+library(tidyverse)
+library(MASS) # for datasets
+library(forcats)
+library(ggthemes)
+```
+
 ## Statistics
 
 Some statistics functions and geom functions can be used synonymously in ggplot2. An example of this is the `geom_bar`, `geom_histogram` and `geom_freqpoly` functions. Under the hood, these functions are using the `stat_bin` function to plot the data. 
@@ -49,21 +50,21 @@ p <- ggplot(iris, aes(x = Sepal.Width))
 p + geom_histogram()
 ```
 
-![plot of chunk unnamed-chunk-1](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-2](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-2-1.png)
 
 ```r
 # plot with geom_bar
 p + geom_bar()
 ```
 
-![plot of chunk unnamed-chunk-1](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-1-2.png)
+![plot of chunk unnamed-chunk-2](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-2-2.png)
 
 ```r
 # plot with stat_bin
 p + stat_bin()
 ```
 
-![plot of chunk unnamed-chunk-1](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-1-3.png)
+![plot of chunk unnamed-chunk-2](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-2-3.png)
 
 Similarly, we can apply the smoothing statistics applied by the `stat_smooth` function with `geom_smooth`.
 
@@ -79,7 +80,7 @@ p + geom_point() +
   geom_smooth(method = "lm", se = FALSE, aes(group = 1))
 ```
 
-![plot of chunk unnamed-chunk-2](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-3](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-3-1.png)
 
 LOESS smoothing is a non-parametric form of regression that uses a weighted, sliding-window, average to calculate a line of best fit. We can control the size of this window with the span argument
 
@@ -92,7 +93,7 @@ p +
   geom_smooth(se = F, span = 0.7) 
 ```
 
-![plot of chunk unnamed-chunk-3](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-4](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-4-1.png)
 
 ```r
 # add overall model layer (loess) change individual model layers to 'lm'.
@@ -102,7 +103,7 @@ p +
   stat_smooth(aes(group = 1), method = "loess", se = F, col = "black")
 ```
 
-![plot of chunk unnamed-chunk-3](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-3-2.png)
+![plot of chunk unnamed-chunk-4](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-4-2.png)
 
 Notice in the plot above that I used both `geom_smooth` and `stat_smooth`. As mentioned before, these functions are interchangeable. 
 
@@ -117,7 +118,7 @@ p +
   stat_smooth(aes(group = 1), method = "loess", se = F, col = "black")
 ```
 
-![plot of chunk unnamed-chunk-4](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-5](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-5-1.png)
 
 In the plot above, the overall model is not included in the legend even though we applied the attribute `color = "black` to it. We can fix this by adding the color as an aesthetic, but we lose our control over the color.
 
@@ -130,7 +131,7 @@ p +
   stat_smooth(aes(group = 1, color = "All"), method = "loess", se = F)
 ```
 
-![plot of chunk unnamed-chunk-5](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-6](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-6-1.png)
 
 Now the 'All' model appears in the legend but as I mentioned, we lost control over the color. We can fix this!
 
@@ -158,7 +159,7 @@ p +
 ## Error: Insufficient values in manual scale. 4 needed but only 1 provided.
 ```
 
-![plot of chunk unnamed-chunk-6](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-7](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-7-1.png)
 
 With `stat_quantile()`, we can apply quantile regression to a dataset. By default, the 1st, 2nd, and 3rd quantiles are modeled as a response to the predictor variable. Speciic quantiles can be specified with the quantiles argument. For example, to show only the median quantile, we can set `quantiles = 0.5`
 
@@ -189,7 +190,7 @@ p <- ggplot(txhousing, aes(x = listings, y = sales))
 p + geom_point() + stat_quantile()
 ```
 
-![plot of chunk unnamed-chunk-7](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-8](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-8-1.png)
 
 ```r
 # group by year
@@ -198,7 +199,7 @@ p +
   stat_quantile(aes(color = year))
 ```
 
-![plot of chunk unnamed-chunk-7](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-7-2.png)
+![plot of chunk unnamed-chunk-8](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-8-2.png)
 
 Changing the color aesthetic did not produce the desired effect. That's because the `year` variable is an integer and we need it to be a factor.
 
@@ -210,7 +211,7 @@ p +
   stat_quantile(aes(color = factor(year)), alpha = 0.6, size = 2)
 ```
 
-![plot of chunk unnamed-chunk-8](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-9](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-9-1.png)
 
 While it's pretty, this plot is messy and not very readable. Let's clean it up by limiting which quantiles are plotted and adjusting our color scale to something more intuitive.
 
@@ -228,7 +229,7 @@ p + geom_point(color = "black", size = .75) +
   scale_color_gradientn(colours = colors)
 ```
 
-![plot of chunk unnamed-chunk-9](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-10](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-10-1.png)
 
 The `stat_sum` function is useful for calculating the counts for each group in a dataset. 
 
@@ -241,21 +242,21 @@ p <- ggplot(diamonds, aes(cut, clarity))
 p + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-10](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-10-1.png)
+![plot of chunk unnamed-chunk-11](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-11-1.png)
 
 ```r
 # reveal overplotting
 p + geom_jitter(width = 0.3)
 ```
 
-![plot of chunk unnamed-chunk-10](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-10-2.png)
+![plot of chunk unnamed-chunk-11](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-11-2.png)
 
 ```r
 # apply stat_sum 
 p + stat_sum()
 ```
 
-![plot of chunk unnamed-chunk-10](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-10-3.png)
+![plot of chunk unnamed-chunk-11](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-11-3.png)
 
 ```r
 # adjust scale_size
@@ -263,7 +264,7 @@ p + stat_sum() +
   scale_size(range = c(1,10))
 ```
 
-![plot of chunk unnamed-chunk-10](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-10-4.png)
+![plot of chunk unnamed-chunk-11](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-11-4.png)
 
 ## Stat Summary
 
@@ -294,7 +295,7 @@ p <- ggplot(Rabbit, aes(x = factor(Dose), y = BPchange, color = Treatment))
 p + geom_point(position = position_jitter(0.2))
 ```
 
-![plot of chunk unnamed-chunk-11](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-12](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-12-1.png)
 
 ```r
 # use stat_summary function to generate mean for each BPchange per Dose
@@ -302,7 +303,7 @@ p +
   stat_summary(geom = 'point', fun.y = mean)
 ```
 
-![plot of chunk unnamed-chunk-11](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-11-2.png)
+![plot of chunk unnamed-chunk-12](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-12-2.png)
 
 ```r
 # examine mean_cl_normal function
@@ -323,7 +324,7 @@ p + stat_summary(geom = 'errorbar', position = posn.d, fun.data = mean_cl_normal
   stat_summary(geom = 'point', position = posn.d, fun.y = mean, shape = "X", size = 3)
 ```
 
-![plot of chunk unnamed-chunk-11](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-11-3.png)
+![plot of chunk unnamed-chunk-12](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-12-3.png)
 
 You can even create custom functions to generate stats. The only caveat is that the variable names need to match the agrguments of the geometry being called.
 
@@ -381,7 +382,7 @@ p +
   stat_summary(geom = 'point', fun.y = median, shape = "X", color = 'black', size = 2, position = posn.d)
 ```
 
-![plot of chunk unnamed-chunk-12](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-13](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-13-1.png)
 
 
 ## Coordinates
@@ -401,14 +402,14 @@ p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
 p
 ```
 
-![plot of chunk unnamed-chunk-13](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-14](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-14-1.png)
 
 ```r
 #zoom in using scale function
 p + scale_x_continuous(limits = c(3.5, 5.5))
 ```
 
-![plot of chunk unnamed-chunk-13](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-13-2.png)
+![plot of chunk unnamed-chunk-14](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-14-2.png)
 
 In the plot above, the loess smoothing for the `virginica` species does not appear because only one data point exists due to the limits we set.
 
@@ -420,7 +421,7 @@ What we really want is to get a zoomed in snapshot of this section of the plot a
 p + coord_cartesian(xlim = c(3.5,5.5))
 ```
 
-![plot of chunk unnamed-chunk-14](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-15](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-15-1.png)
 
 **As a rule of thumb, it is good practice to use a 1:1 aspect ratio when your axes show the same scales.**
 
@@ -429,7 +430,7 @@ p + coord_cartesian(xlim = c(3.5,5.5))
 p + coord_equal()
 ```
 
-![plot of chunk unnamed-chunk-15](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-15-1.png)
+![plot of chunk unnamed-chunk-16](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-16-1.png)
 
 The `coord_polar` function converts planar x-y cartesian plots into polar coordinates. This can be useful for making pie charts. In general, it is best practice to avoid pie charts. Other plots can capture the same information in much more meaningful ways. 
 
@@ -441,7 +442,7 @@ p <- ggplot(diamonds, aes(x = 1, fill = clarity))+
 p + coord_polar(theta = 'y')
 ```
 
-![plot of chunk unnamed-chunk-16](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-16-1.png)
+![plot of chunk unnamed-chunk-17](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-17-1.png)
 
 ## Facets
 
@@ -482,21 +483,21 @@ p <- ggplot(crabs, aes(x = CW, y = RW, color = interaction(sex, sp))) +
 p
 ```
 
-![plot of chunk unnamed-chunk-17](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-17-1.png)
+![plot of chunk unnamed-chunk-18](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-18-1.png)
 
 ```r
 # facet status by rows
 p + facet_grid(sex~.)
 ```
 
-![plot of chunk unnamed-chunk-17](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-17-2.png)
+![plot of chunk unnamed-chunk-18](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-18-2.png)
 
 ```r
 # facet species by column
 p + facet_grid(~sp)
 ```
 
-![plot of chunk unnamed-chunk-17](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-17-3.png)
+![plot of chunk unnamed-chunk-18](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-18-3.png)
 
 ```r
 # facet both sex and species, add smoothing line, adjust the aspect ratio
@@ -505,7 +506,7 @@ p + facet_grid(sex~ sp) +
   coord_equal()
 ```
 
-![plot of chunk unnamed-chunk-17](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-17-4.png)
+![plot of chunk unnamed-chunk-18](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-18-4.png)
 
 Sometimes it may be necessary to adjust the x and/or y axis scales in conjunction with facets. 
 This could be due to redundancy of factors appearing in plots where there is no data for that particular factor. Here's an example using the  
@@ -549,14 +550,14 @@ p <- ggplot(UScereal, aes(x = calories, y = cereal)) +
 p
 ```
 
-![plot of chunk unnamed-chunk-18](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-18-1.png)
+![plot of chunk unnamed-chunk-19](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-19-1.png)
 
 ```r
 # facet plot by manufacturer
 p +facet_grid(mfr ~.)
 ```
 
-![plot of chunk unnamed-chunk-18](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-18-2.png)
+![plot of chunk unnamed-chunk-19](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-19-2.png)
 
 As you can see the plot above is unreadable. This can be fixed by calling some arguments to the `facet_grid` function. 
 We can also adjust the ranking of the cereals using the `forcats` package. Right now they are alphabetical but it would be more useful to rank the cereals in order of the amount of calories.
@@ -578,7 +579,7 @@ ggplot(UScereal, aes(x = calories, y = fct_reorder(f = cereal, x = calories, .de
 ## Error in check_factor(.f): argument ".f" is missing, with no default
 ```
 
-<img src="/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
+<img src="/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
 
 ## Themes
 
@@ -620,7 +621,7 @@ p <- ggplot(titanic, aes(x = factor(Class), y = Freq, fill = factor(Survived))) 
 p
 ```
 
-![plot of chunk unnamed-chunk-20](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-20-1.png)
+![plot of chunk unnamed-chunk-21](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-21-1.png)
 
 ```r
 # adjust plot elements using theme layer
@@ -640,7 +641,7 @@ p + theme(axis.title = element_text(family = 'serif', size = 14, face = 'bold'),
           )
 ```
 
-![plot of chunk unnamed-chunk-20](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-20-2.png)
+![plot of chunk unnamed-chunk-21](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-21-2.png)
 
 If you have multiple plots, adjusting the themes for each plot would be a lot of work. Luckily, there are more efficient ways of handling this. 
 
@@ -666,7 +667,7 @@ theme_smoke <- theme(panel.background = element_blank(),
 p + theme_smoke
 ```
 
-![plot of chunk unnamed-chunk-21](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-21-1.png)
+![plot of chunk unnamed-chunk-22](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-22-1.png)
 
 The default theme is`theme_gray` but there are a variety of themes that come with `ggplot2`. In addition, the `ggthemes` package has many more themes ready for use.
 
@@ -676,14 +677,14 @@ The default theme is`theme_gray` but there are a variety of themes that come wit
 p + theme_classic()
 ```
 
-![plot of chunk unnamed-chunk-22](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-22-1.png)
+![plot of chunk unnamed-chunk-23](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-23-1.png)
 
 ```r
 # plot using the wall street journal ggtheme 
 p + theme_wsj()
 ```
 
-![plot of chunk unnamed-chunk-22](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-22-2.png)
+![plot of chunk unnamed-chunk-23](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-23-2.png)
 
 You can use `theme_update` and `theme_set` to update elements or change the default theme for all plots.
 
@@ -697,7 +698,7 @@ old <- theme_set(theme_fivethirtyeight())
 p
 ```
 
-![plot of chunk unnamed-chunk-23](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-23-1.png)
+![plot of chunk unnamed-chunk-24](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-24-1.png)
 
 ```r
 # update element of the default theme
@@ -708,7 +709,7 @@ modified_theme <- theme_update(axis.text = element_text(size = 14),
 p
 ```
 
-![plot of chunk unnamed-chunk-23](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-23-2.png)
+![plot of chunk unnamed-chunk-24](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-24-2.png)
 
 ```r
 # show different plot uses the new updated theme
@@ -717,7 +718,7 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
   facet_grid(~cyl)
 ```
 
-![plot of chunk unnamed-chunk-23](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-23-3.png)
+![plot of chunk unnamed-chunk-24](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-24-3.png)
 
 ```r
 # revert back to original default theme  
@@ -727,4 +728,4 @@ theme_set(old)
 p
 ```
 
-![plot of chunk unnamed-chunk-23](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-23-4.png)
+![plot of chunk unnamed-chunk-24](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-24-4.png)

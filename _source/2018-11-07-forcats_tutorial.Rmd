@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ### Defining Factors
 The `forcats` package is part of the tidyverse and is useful for dealing with factors. Factors are simply categorical variables, useful for controlling the levels and order of a vector.
 
-Categoricalv or discrete variables, as opposed to continuous variables, are often qualitiative and can take on a finite number of values.
+Categorical or discrete variables, as opposed to continuous variables, are often qualitiative and can take on a finite number of values.
 
 Examples of categorical variables: types of fruit, locations, party preference, ethnicity.
 

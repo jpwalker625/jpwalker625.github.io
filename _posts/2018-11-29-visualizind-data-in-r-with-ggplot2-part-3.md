@@ -12,19 +12,6 @@ tags:
   - visualization
 ---
 
-```r
-knitr::opts_chunk$set(echo = T, warning = F, message = F)
-
-# load required packages
-library(forcats)
-library(geomnet)
-library(ggfortify)
-library(ggplot2movies) #for datasets
-library(ggtern)
-library(reshape2)
-library(stringr)
-library(tidyverse)
-```
 
 ## This is the final part of the series on data visualization using the popular ggplot2 package. 
 
@@ -38,6 +25,19 @@ In **part 2**, we extended our understanding of data visaluzation by learning ab
 
 In this final chapter, we will explore plots intended for a specialty audience. We will also learn about plots for specific data types such as **ternary plots, networks and maps.**
 
+Before we dive in, let's load the required packages.
+
+```r
+# load required packages
+library(forcats)
+library(geomnet)
+library(ggfortify)
+library(ggplot2movies) #for datasets
+library(ggtern)
+library(reshape2)
+library(stringr)
+library(tidyverse)
+```
 
 ## Statistical Plots for an Academic Audience
 
@@ -125,7 +125,7 @@ p <- ggplot(movie_sample, aes(x = rating, y = votes, group = rating)) +
 p
 ```
 
-![plot of chunk unnamed-chunk-1](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-2](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-2-1.png)
 
 There is a large number of votes for rating. We will need to make some transformations on the data. Be careful as the tranformation will occur differently depending on how you call your stat functions and arguments.
 
@@ -135,14 +135,14 @@ There is a large number of votes for rating. We will need to make some transform
 p + scale_y_log10()  
 ```
 
-![plot of chunk unnamed-chunk-2](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-3](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-3-1.png)
 
 ```r
 # transformation happens after the statistics are calculated
 p + coord_trans(y = "log10")
 ```
 
-![plot of chunk unnamed-chunk-2](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-2-2.png)
+![plot of chunk unnamed-chunk-3](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-3-2.png)
 
 It is possible to cut up continuous variables into ordinal variables using the following functions which `cut` the data.
   
@@ -159,7 +159,7 @@ p <- ggplot(movie_sample, aes(x = year, y = budget)) + scale_y_log10(labels = sc
 p + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-3](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-4](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-4-1.png)
 
 ```r
 # use cut_interval to divide year into  sections with equal range
@@ -167,7 +167,7 @@ p + geom_point()
 p + geom_boxplot(aes(group = cut_interval(year, n = 5)))
 ```
 
-![plot of chunk unnamed-chunk-3](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-3-2.png)
+![plot of chunk unnamed-chunk-4](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-4-2.png)
 
 ```r
 # use cut_number function to divide year into groups with approximately equal number of observations
@@ -175,7 +175,7 @@ p + geom_boxplot(aes(group = cut_interval(year, n = 5)))
 p + geom_boxplot(aes(group = cut_number(year, n = 5)))
 ```
 
-![plot of chunk unnamed-chunk-3](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-3-3.png)
+![plot of chunk unnamed-chunk-4](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-4-3.png)
 
 ```r
 # use cut_width to make group of specified width
@@ -183,7 +183,7 @@ p + geom_boxplot(aes(group = cut_number(year, n = 5)))
 p + geom_boxplot(aes(group = cut_width(year, width = 10)))
 ```
 
-![plot of chunk unnamed-chunk-3](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-3-4.png)
+![plot of chunk unnamed-chunk-4](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-4-4.png)
 
 One drawback of the box plot visualization is that you don't have any indication of the sample size for each group. One way of showing this variation is to use the `varwidth` argument.
 
@@ -196,7 +196,7 @@ p <- ggplot(movie_sample, aes(x = mpaa, y= budget)) + scale_y_log10(labels = sca
 p + geom_boxplot(varwidth = T)
 ```
 
-![plot of chunk unnamed-chunk-4](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-5](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-5-1.png)
 
 And just so we can confirm this argument is doing what we expect it to, we can check the math manually.
 
@@ -272,7 +272,7 @@ ggplot(quakes, aes(x = mag)) +
   geom_vline(xintercept = mode, col = "red")
 ```
 
-![plot of chunk unnamed-chunk-6](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-7](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-7-1.png)
 
 There are three parameters that you may be tempted to adjust in a density plot:
 
@@ -307,27 +307,27 @@ p <- ggplot(quakes, aes(x = mag)) +
 p + geom_density()
 ```
 
-![plot of chunk unnamed-chunk-7](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-8](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-8-1.png)
 
 ```r
 # adjust the bandwidth 2 different ways
 p + geom_density(bw = 0.25 * get_bw, color = 'red')
 ```
 
-![plot of chunk unnamed-chunk-7](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-7-2.png)
+![plot of chunk unnamed-chunk-8](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-8-2.png)
 
 ```r
 p +  geom_density(adjust = 0.25)
 ```
 
-![plot of chunk unnamed-chunk-7](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-7-3.png)
+![plot of chunk unnamed-chunk-8](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-8-3.png)
 
 ```r
 # adjust the kernel
 p + geom_density(kernel = "r")
 ```
 
-![plot of chunk unnamed-chunk-7](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-7-4.png)
+![plot of chunk unnamed-chunk-8](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-8-4.png)
 
 ## Plots for Specific Data Types
 
@@ -342,7 +342,7 @@ Base R provides a quick and dirty function, `pairs()` that will output a scatter
 pairs(iris[1:4])
 ```
 
-![plot of chunk unnamed-chunk-8](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-9](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-9-1.png)
 
 This can also be done in `ggplot2`
 
@@ -384,7 +384,7 @@ ggplot(xx, aes(x = Var1, y = Var2)) +
         strip.background = element_blank()) 
 ```
 
-![plot of chunk unnamed-chunk-9](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-10](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-10-1.png)
 
 ### Ternary Plot
 
@@ -423,7 +423,7 @@ ggplot(USDA_long, aes(x = ID, y = value, fill = key))+
   coord_flip()
 ```
 
-![plot of chunk unnamed-chunk-10](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-10-1.png)
+![plot of chunk unnamed-chunk-11](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-11-1.png)
 
 This is a an acceptable plot to represent the composition of soil for each sample. But suppose we wanted to use a ternary plot to visaulize this.
 
@@ -446,7 +446,7 @@ ggtern(data=DATA,aes(x,y,z,xend=xend,yend=yend,zend=zend)) +
   labs(title = "Sample Midpoint Segments")
 ```
 
-![plot of chunk unnamed-chunk-11](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-12](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-12-1.png)
 
 And with the USDA soil dataset,
 
@@ -459,7 +459,7 @@ p <- ggtern(USDA, aes(x = Sand, y = Silt, z = Clay))
 p + geom_point() 
 ```
 
-![plot of chunk unnamed-chunk-12](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-13](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-13-1.png)
 
 The `ggtern` package is compatible with `ggplot2` functionality to create ternary plots.
 
@@ -472,7 +472,7 @@ p +
   guides(alpha = F)
 ```
 
-![plot of chunk unnamed-chunk-13](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-14](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-14-1.png)
 
 ### Network Plot
 
@@ -514,7 +514,7 @@ ggplot(mmnet, aes(from_id = Name1, to_id = Name2, col = Gender )) +
   xlim(c(-.5, 1.05))
 ```
 
-![plot of chunk unnamed-chunk-14](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-15](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-15-1.png)
 
 
 ### Diagnostic Plots
@@ -544,7 +544,7 @@ res <- lm(Volume ~ Girth, data = trees)
 plot(res)
 ```
 
-![plot of chunk unnamed-chunk-15](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-15-1.png)![plot of chunk unnamed-chunk-15](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-15-2.png)![plot of chunk unnamed-chunk-15](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-15-3.png)![plot of chunk unnamed-chunk-15](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-15-4.png)
+![plot of chunk unnamed-chunk-16](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-16-1.png)![plot of chunk unnamed-chunk-16](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-16-2.png)![plot of chunk unnamed-chunk-16](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-16-3.png)![plot of chunk unnamed-chunk-16](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-16-4.png)
 
 We can achieve similar results in ggplot2 using the `ggfortify` package. This package converts funcitons between the base R plot `graphics` and `ggplot2` using the `grid` graphics.
 
@@ -553,7 +553,7 @@ We can achieve similar results in ggplot2 using the `ggfortify` package. This pa
 autoplot(res, ncol = 2)
 ```
 
-![plot of chunk unnamed-chunk-16](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-16-1.png)
+![plot of chunk unnamed-chunk-17](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-17-1.png)
 
 Autoplot works with time series as well!
 
@@ -574,7 +574,7 @@ str(EuStockMarkets)
 autoplot(datasets::EuStockMarkets)
 ```
 
-![plot of chunk unnamed-chunk-17](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-17-1.png)
+![plot of chunk unnamed-chunk-18](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-18-1.png)
 
 ### Distance Matrices and Multi Dimensional Scaling (MDS)
 
@@ -598,7 +598,7 @@ autoplot(eurodist) +
   coord_fixed()
 ```
 
-![plot of chunk unnamed-chunk-18](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-18-1.png)
+![plot of chunk unnamed-chunk-19](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-19-1.png)
 
 ```r
 # Autoplot of MDS
@@ -608,7 +608,7 @@ autoplot(cmdscale(eurodist, eig = TRUE),
          size = 0)
 ```
 
-![plot of chunk unnamed-chunk-18](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-18-2.png)
+![plot of chunk unnamed-chunk-19](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-19-2.png)
 
 ### K-Means Clustering
 ggfortify also supports stats::kmeans class objects. You must explicitly pass the original data to the autoplot function via the data argument, since kmeans objects don't contain the original data. The result will be automatically colored according to cluster.
@@ -622,14 +622,14 @@ iris_k <- kmeans(iris[-5], 3)
 autoplot(iris_k, data = iris, frame = TRUE)
 ```
 
-![plot of chunk unnamed-chunk-19](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-19-1.png)
+![plot of chunk unnamed-chunk-20](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-20-1.png)
 
 ```r
 # Autoplot: above, plus shape according to species
 autoplot(iris_k, data = iris, frame = TRUE, shape = 'Species')
 ```
 
-![plot of chunk unnamed-chunk-19](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-19-2.png)
+![plot of chunk unnamed-chunk-20](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-20-2.png)
 
 ## Maps
 
@@ -678,7 +678,7 @@ ggplot(state, aes(x = long, y = lat, group = group)) +
   theme_void()
 ```
 
-![plot of chunk unnamed-chunk-20](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-20-1.png)
+![plot of chunk unnamed-chunk-21](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-21-1.png)
 
 Let's add some information to our map. We will use the `us.cities` dataset from the `maps` package
 
@@ -718,7 +718,7 @@ p + geom_point(data = us.cities,
   scale_color_distiller(palette = 'Spectral')
 ```
 
-![plot of chunk unnamed-chunk-21](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-21-1.png)
+![plot of chunk unnamed-chunk-22](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-22-1.png)
 
 ### Cartographic Maps
 
@@ -735,7 +735,7 @@ houston <- get_map(location = "Houston, Texas", source = "stamen", maptype = "to
 ```
 
 ```
-## Error in download.file(url, destfile = tmp, quiet = !messaging, mode = "wb"): cannot open URL 'http://maps.googleapis.com/maps/api/staticmap?center=Houston,+Texas&zoom=10&size=640x640&scale=2&maptype=terrain&sensor=false'
+## Error in download.file(url, destfile = destfile, quiet = !messaging, mode = "wb"): cannot open URL 'https://maps.googleapis.com/maps/api/staticmap?center=Houston,+Texas&zoom=10&size=640x640&scale=2&maptype=terrain'
 ```
 
 ```r
@@ -760,7 +760,7 @@ str(crime)
 
 ```
 ## 'data.frame':	86314 obs. of  17 variables:
-##  $ time    : POSIXt, format: "2009-12-31 22:00:00" "2009-12-31 22:00:00" ...
+##  $ time    : POSIXct, format: "2009-12-31 22:00:00" "2009-12-31 22:00:00" ...
 ##  $ date    : chr  "1/1/2010" "1/1/2010" "1/1/2010" "1/1/2010" ...
 ##  $ hour    : int  0 0 0 0 0 0 0 0 0 0 ...
 ##  $ premise : chr  "18A" "13R" "20R" "20R" ...
@@ -820,7 +820,7 @@ houston <- get_map(location = "Houston, Texas", source = "google", maptype = 'te
 ```
 
 ```
-## Error in download.file(url, destfile = tmp, quiet = !messaging, mode = "wb"): cannot open URL 'http://maps.googleapis.com/maps/api/staticmap?center=Houston,+Texas&zoom=10&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false'
+## Error in download.file(url, destfile = destfile, quiet = !messaging, mode = "wb"): cannot open URL 'https://maps.googleapis.com/maps/api/staticmap?center=Houston,+Texas&zoom=10&size=640x640&scale=2&maptype=terrain&language=en-EN'
 ```
 
 ```r
@@ -850,7 +850,7 @@ houston <- get_map(location = bbox, zoom = 11,  maptype = 'terrain')
 ```
 
 ```
-## Error in download.file(url, destfile = tmp, quiet = !messaging, mode = "wb"): cannot open URL 'http://maps.googleapis.com/maps/api/staticmap?center=29.741517,-95.405337&zoom=11&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false'
+## Error in download.file(url, destfile = destfile, quiet = !messaging, mode = "wb"): cannot open URL 'https://maps.googleapis.com/maps/api/staticmap?center=29.741517,-95.405337&zoom=11&size=640x640&scale=2&maptype=terrain&language=en-EN'
 ```
 
 ```r
@@ -988,7 +988,7 @@ p <- ggmap(storms_map) +
 p
 ```
 
-![plot of chunk unnamed-chunk-27](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-27-1.png)
+![plot of chunk unnamed-chunk-28](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-28-1.png)
 
 ```r
 # Make animated plot, save to file in working directory
@@ -1005,7 +1005,7 @@ p <- ggplot(storms, aes(x = date, y = wind, color = name, frame = date, group = 
 p
 ```
 
-![plot of chunk unnamed-chunk-28](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-28-1.png)
+![plot of chunk unnamed-chunk-29](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-29-1.png)
 
 ```r
 gganimate(p, interval = 0.2, filename = "storm-winds.gif", convert = "gm convert")
@@ -1062,7 +1062,7 @@ grid.lines(x = c(0, 0.75), y = c(0.25, 1),
           gp = gpar(lty = 2, col = "red"))
 ```
 
-![plot of chunk unnamed-chunk-30](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-30-1.png)
+![plot of chunk unnamed-chunk-31](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-31-1.png)
 
 **Viewports control how graphical outputs are arranged/plotted.**
 
@@ -1078,7 +1078,7 @@ pushViewport(vp)
 grid.circle(gp = gpar(fill = "blue"))
 ```
 
-![plot of chunk unnamed-chunk-31](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-31-1.png)
+![plot of chunk unnamed-chunk-32](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-32-1.png)
 
 *Grobs*, or Graphical Objects, are the object forms of the graphical outputs found in plots.
 
@@ -1150,7 +1150,7 @@ grid.draw(g[[legend_index]])
 grid.draw(g[[15]])
 ```
 
-![plot of chunk unnamed-chunk-32](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-32-1.png)
+![plot of chunk unnamed-chunk-33](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-33-1.png)
 
 It is possible to modify the gtable to add new graphical objects as in this example:
 
@@ -1172,7 +1172,7 @@ gtab$grobs[[legend_index]] <- new_legend
 grid.draw(gtab)
 ```
 
-![plot of chunk unnamed-chunk-33](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-33-1.png)
+![plot of chunk unnamed-chunk-34](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-34-1.png)
 
 ## BagPlots
 
@@ -1217,7 +1217,7 @@ points(bag$hull.bag, col = "orange", pch = 16)
 points(bag$pxy.outlier, col = "purple", pch = 16)
 ```
 
-![plot of chunk unnamed-chunk-34](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-34-1.png)
+![plot of chunk unnamed-chunk-35](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-35-1.png)
 
 The `alpack` package makes it easy to create this bagplot with the built-in function. If were to make this plot using ggplot2, we could make three separate geom layers as in this example:
 
@@ -1235,7 +1235,7 @@ ggplot(diamonds_subset, aes(x = carat,  y = price)) +
   geom_point(data = pxy.outlier, aes(x = x, y = y), col = "purple", pch = 16, cex = 1.5)
 ```
 
-![plot of chunk unnamed-chunk-35](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-35-1.png)
+![plot of chunk unnamed-chunk-36](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-36-1.png)
 
 The plot above is a good starting point, but we can do better. In the process, we will learn how to use the `ggproto` function which can be used to make any new layer you can think of and ultimately build your own plots. `ggproto` takes 4 arguments:
 
@@ -1310,7 +1310,7 @@ ggplot(diamonds_subset, aes(x = carat,  y = price))+
   stat_bag(fill = "black")
 ```
 
-![plot of chunk unnamed-chunk-38](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-38-1.png)
+![plot of chunk unnamed-chunk-39](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-39-1.png)
 
 This custom function is flexible as well. Instead of calling the fill in the stat_bag layer, we can group the dataset and apply the stat_bag function to each group.
 
@@ -1320,7 +1320,7 @@ ggplot(diamonds_subset, aes(x = carat,  y = price, fill = clarity ))+
   stat_bag()
 ```
 
-![plot of chunk unnamed-chunk-39](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-39-1.png)
+![plot of chunk unnamed-chunk-40](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-40-1.png)
 
 
 [^1]: D. Kahle and H. Wickham. ggmap: Spatial Visualization with ggplot2. The R Journal, 5(1), 144-161. URL

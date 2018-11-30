@@ -15,7 +15,7 @@ categories:
 ### Defining Factors
 The `forcats` package is part of the tidyverse and is useful for dealing with factors. Factors are simply categorical variables, useful for controlling the levels and order of a vector.
 
-Categoricalv or discrete variables, as opposed to continuous variables, are often qualitiative and can take on a finite number of values.
+Categorical or discrete variables, as opposed to continuous variables, are often qualitiative and can take on a finite number of values.
 
 Examples of categorical variables: types of fruit, locations, party preference, ethnicity.
 
@@ -259,6 +259,10 @@ ggplot(mtcars, aes(mpg, fct_reorder(f = model, x = mpg))) +
   labs(y = "model") +
   ggtitle(label = "We can make better comparison by reordering the levels based on the mpg values!") +
   theme(plot.title = element_text(size = 10, face = 'bold'))
+```
+
+```
+## Error in check_factor(.f): argument ".f" is missing, with no default
 ```
 
 ![plot of chunk fct_reorder](/figure/source/2018-11-07-forcats_tutorial/fct_reorder-1.png)

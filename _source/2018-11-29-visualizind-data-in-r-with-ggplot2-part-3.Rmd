@@ -11,18 +11,8 @@ tags:
   - tutorials
   - visualization
 ---
-```{r setup, warning =FALSE, message=FALSE}
+```{r setup,include = FALSE}
 knitr::opts_chunk$set(echo = T, warning = F, message = F)
-
-# load required packages
-library(forcats)
-library(geomnet)
-library(ggfortify)
-library(ggplot2movies) #for datasets
-library(ggtern)
-library(reshape2)
-library(stringr)
-library(tidyverse)
 ```
 
 ## This is the final part of the series on data visualization using the popular ggplot2 package. 
@@ -37,6 +27,18 @@ In **part 2**, we extended our understanding of data visaluzation by learning ab
 
 In this final chapter, we will explore plots intended for a specialty audience. We will also learn about plots for specific data types such as **ternary plots, networks and maps.**
 
+Before we dive in, let's load the required packages.
+```{r}
+# load required packages
+library(forcats)
+library(geomnet)
+library(ggfortify)
+library(ggplot2movies) #for datasets
+library(ggtern)
+library(reshape2)
+library(stringr)
+library(tidyverse)
+```
 
 ## Statistical Plots for an Academic Audience
 

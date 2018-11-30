@@ -12,14 +12,8 @@ tags:
   - tutorials
 ---
 
-```{r setup, warning = FALSE, message = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-
-# load required libraries
-library(tidyverse)
-library(MASS) #for datasets
-library(forcats)
-library(ggthemes)
 ```
 
 ## This is the second of a three part series on data visualization using the popular ggplot2 package. 
@@ -34,6 +28,15 @@ In Part 1, we discussed 3 elements of the grammar of graphics: data, aesthetics,
 * Coordinates
 * Facets 
 * Themes 
+
+Let's begin by loading the required packages.
+```{r}
+# load required packages
+library(tidyverse)
+library(MASS) # for datasets
+library(forcats)
+library(ggthemes)
+```
 
 ## Statistics
 

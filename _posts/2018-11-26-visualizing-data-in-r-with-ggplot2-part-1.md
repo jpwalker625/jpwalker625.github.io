@@ -13,12 +13,6 @@ tags:
 ---
 
 
-```r
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-
-# load libraries
-library(tidyverse)
-```
 
 ## This is the first of a three part series on data visualization using the popular `ggplot2` package.
 
@@ -66,12 +60,15 @@ Common aesthetics include:
 * fill 
 * size 
 * alpha 
-* linetype 
+* linetype  
 * labels 
 * shape
 
 
 ```r
+# load tidyverse library which includes ggplot2
+library(tidyverse)
+
 #subset/sample the diamonds dataset
 diamonds_sample <- sample_n(diamonds, size = 100)
 
