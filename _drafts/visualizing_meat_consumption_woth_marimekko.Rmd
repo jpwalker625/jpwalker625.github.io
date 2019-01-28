@@ -1,0 +1,79 @@
+---
+title: "morimekko chart"
+author: "Joseph Walker"
+date: "1/25/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+
+meat <- read_csv("../DataCamp/data/meat_consumption.csv")
+
+colnames(meat) <- tolower(colnames(meat))
+
+meat %>%
+  group_by(location) %>%
+  summarise(average_value = mean(value)) %>%
+  arrange(desc(average_value)) %>%
+  top_n(10)
+  
+top5 <- meat %>%
+  filter(location %in% c("CHN", "USA", "BRA", "RUS") & 
+           measure == "KG_CAP")
+
+top5_summary <- top5 %>%
+  group_by(location, subject) %>%
+  summarise(mean_consumption = mean(value))
+
+total <- sum(top5_summary$mean_consumption)
+
+location_pct <- top5_summary %>%
+  group_by(location) %>%
+  summarise(location_prop = (sum(mean_consumption)/total) * 100)
+
+location_pct$xmax <- cumsum(location_pct$location_prop)
+location_pct$xmin <- location_pct$xmax - location_pct$location_prop
+
+top5_summary <- left_join(top5_summary, location_pct)
+
+total_consumption_by_location <- top5_summary %>%
+  group_by(location) %>%
+  summarise(total_consumption = sum(mean_consumption))
+
+top5_summary <- left_join(top5_summary, total_consumption_by_location)
+
+top5_summary <- top5_summary %>%
+  mutate(subject_prop = (mean_consumption/total_consumption) * 100,
+         ymax = cumsum(subject_prop),
+         ymin = ymax - subject_prop)
+
+top5_summary <- top5_summary %>%
+  mutate(xtext = xmin + (xmax - xmin)/2,
+         ytext = ymin + (ymax - ymin) /2)
+
+
+p <- ggplot(top5_summary, aes(ymin = ymin, ymax = ymax, 
+                         xmin = xmin, xmax = xmax, fill = subject))
+p1 <- p + geom_rect(colour = ('grey'))
+
+p2 <- p1 + geom_text(aes(x = xtext, y = ytext,
+     label = ifelse(location == "BRA", paste(subject,
+         " - ", round(subject_prop, 2), "%", sep = ""), paste(round(subject_prop, 2),
+         "%", sep = ""))), size = 3)
+p3 <- p2 + geom_text(aes(x = xtext, y = 103,
+     label = paste(location)), size = 4)
+
+p3 + theme_bw() + 
+  labs(x = NULL, y = NULL, fill = NULL) + 
+  scale_x_continuous(expand = c(0,0)) +
+  scale_y_continuous(limits = c(0, 105), expand = c(0,0)) +
+  theme(legend.position = "none", 
+     panel.grid.major = element_line(colour = NA),
+     panel.grid.minor = element_line(colour = NA))
+```
+
