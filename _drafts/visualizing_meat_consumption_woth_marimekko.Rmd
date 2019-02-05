@@ -1,5 +1,5 @@
 ---
-title: "morimekko chart"
+title: "Marimekko char"
 author: "Joseph Walker"
 date: "1/25/2019"
 output: html_document
@@ -9,65 +9,119 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Introduction goes here
+
+
+First up, let's load the tidyverse package and read in the data. [^1] 
 ```{r}
+#load tidyverse package
 library(tidyverse)
 
-meat <- read_csv("../DataCamp/data/meat_consumption.csv")
+#read in the data
+meat <- read_csv("_data/meat_consumption.csv")
+```
 
+There are 3 main columnms we'll be working with. The *location* column includes countries, the *subject* includes 4 types of meat consumed, and the *measurement* column contains two types of measurement values for meat consumption.  
+
+Now, let's tidy the data to make it easier to work with.
+```{r}
+# lowercase column names
 colnames(meat) <- tolower(colnames(meat))
+```
 
-meat %>%
-  group_by(location) %>%
-  summarise(average_value = mean(value)) %>%
-  arrange(desc(average_value)) %>%
-  top_n(10)
-  
-top5 <- meat %>%
-  filter(location %in% c("CHN", "USA", "BRA", "RUS") & 
+It would be impractical to try and visualize the entire dataset with a marimekko chart. Instead, let's analyze the meat consumption patterns of 4 countries. We'll examine the data in terms of kilograms per capita. Along with USA, I'll pick 3 countries I've visited in recent years: Peru (PER), Japan (JPN), and New Zealand (NZL). 
+
+```{r}
+# filter the data
+top4 <- meat %>%
+  filter(location %in% c("USA", "JPN", "PER", "NZL") & 
            measure == "KG_CAP")
 
-top5_summary <- top5 %>%
+# compute the mean cosumption for each country by type of meat
+top4_summary <- top4 %>%
   group_by(location, subject) %>%
   summarise(mean_consumption = mean(value))
+```
 
-total <- sum(top5_summary$mean_consumption)
+Now let's calculate the proportion of meat consumption for each country as a percentage. 
+```{r}
+#calculate global total consumption 
+(total <- sum(top4_summary$mean_consumption))
 
-location_pct <- top5_summary %>%
+#calculate proportion as a percentage of total
+location_pct <- top4_summary %>%
   group_by(location) %>%
   summarise(location_prop = (sum(mean_consumption)/total) * 100)
+```
 
+In the next part, we need to calculate coordinates for plotting purposes. We will do this by calculating the x-axis min and max in terms of the cumulative sum of the location proportions from above.
+
+```{r}
+# calculate xmin and xmax for each country
 location_pct$xmax <- cumsum(location_pct$location_prop)
 location_pct$xmin <- location_pct$xmax - location_pct$location_prop
+```
 
-top5_summary <- left_join(top5_summary, location_pct)
+Now we'll join this data in with the `top4_summary` data frame. Next we'll calculate the total average annual meat consumption for each country and use this to calculate the meat category proportions on the y-axis.
 
-total_consumption_by_location <- top5_summary %>%
+```{r}
+# join the data frames
+top4_summary <- left_join(top4_summary, location_pct)
+
+# sum the total mean_consumption values by location
+total_consumption_by_location <- top4_summary %>%
   group_by(location) %>%
   summarise(total_consumption = sum(mean_consumption))
 
-top5_summary <- left_join(top5_summary, total_consumption_by_location)
+# join the data frames
+top4_summary <- left_join(top4_summary, total_consumption_by_location)
 
-top5_summary <- top5_summary %>%
+# calculate the y-axis min and max values for each type of meat as a proportion of respective country
+top4_summary <- top4_summary %>%
   mutate(subject_prop = (mean_consumption/total_consumption) * 100,
          ymax = cumsum(subject_prop),
          ymin = ymax - subject_prop)
+```
 
-top5_summary <- top5_summary %>%
+Before we begin to plot, we need to create coordinates for the text. The following we'll make everything centered in its respective box on the chart.
+
+```{r}
+# calculate text coordinates
+top4_summary <- top4_summary %>%
   mutate(xtext = xmin + (xmax - xmin)/2,
          ytext = ymin + (ymax - ymin) /2)
 
+```
 
-p <- ggplot(top5_summary, aes(ymin = ymin, ymax = ymax, 
+And now we're ready to plot the chart! We'll put it together in a series of plots so it's easier to understand all the parts we just calculated.
+
+```{r}
+# create base plot
+p <- ggplot(top4_summary, aes(ymin = ymin, ymax = ymax, 
                          xmin = xmin, xmax = xmax, fill = subject))
+
+# add in geometry
 p1 <- p + geom_rect(colour = ('grey'))
 
+p1
+```
+
+In the plot above, we can see we have 5 columns each representing a different country. Within each column, we have the different meat categories. On both the x and y axes, the boxes are scaled to the proportion as a percentage of the overall total consumption of meat type (x-axis) or country (y-axis).
+
+Now, let's add in the some text so we can better understand the chart.
+
+```{r}
+# adding in proportion data
 p2 <- p1 + geom_text(aes(x = xtext, y = ytext,
-     label = ifelse(location == "BRA", paste(subject,
+     label = ifelse(location == "JPN", paste(subject,
          " - ", round(subject_prop, 2), "%", sep = ""), paste(round(subject_prop, 2),
          "%", sep = ""))), size = 3)
+
+# adding in country labels
 p3 <- p2 + geom_text(aes(x = xtext, y = 103,
      label = paste(location)), size = 4)
 
+# Adding the finishing touches
 p3 + theme_bw() + 
   labs(x = NULL, y = NULL, fill = NULL) + 
   scale_x_continuous(expand = c(0,0)) +
@@ -77,3 +131,49 @@ p3 + theme_bw() +
      panel.grid.minor = element_line(colour = NA))
 ```
 
+And there you have the **marimekko chart**. Here are a few points we can take away from this chart:
+
+* Sheep is the least consumed meat overall. New Zealand consumes the most sheep meat in kg/capita compared to the other countries and accounts for 18.26% of the countries overall meat consumption.  
+* Pig is consumed most prominently in Japan accounting for 41.5% of its total meat consumption. Japan also has the highest proportion of pig consumption compared to the other countries. 
+* Overall, poultry is greatly consumed across all contries and leads in proportion in New Zealand, Peru, and the USA. Peru's proprotion of poultry consumed is much greater than the other countries.
+* In terms of total meat consumption, USA is the largest consumer of the 4, followed by New Zealand. 
+
+While it is possible to gather useful information from this chart, there are still some challenges. For instance, we don't know the absolute values since we've plotted the proportion as a percentage. Additionally, it's difficult to compare the width of the boxes to determine which countries consume more meat as a function of kilograms per capita. Japan and Peru seem to be very close as is the case with New Zealand and the USA. 
+
+Here is the data displayed differently:
+
+```{r}
+library(gridExtra)
+
+# total meat consumption by Country
+M_C <- top4_summary %>%
+  select(location, location_prop, total_consumption) %>%
+  unique() %>%
+ggplot(aes(x = location, y = total_consumption)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(sec.axis = sec_axis(trans = (~./total), labels = scales::percent, name = "Relative Consumption [%]"))
+
+#total meat consumption by country, faceted by type
+M_C_T <- top4_summary %>%
+  select(location, subject, mean_consumption) %>%
+  ggplot(aes(x = location, y = mean_consumption, fill = subject)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_y_continuous(sec.axis = sec_axis(trans = (~./total), labels = scales::percent, name = "Relative Consumption [%]"))
+
+#total meat consumption by type
+M_T <- ggplot(top4_summary, aes(x = subject, y = mean_consumption)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(sec.axis = sec_axis(trans = (~./total), labels = scales::percent, name = "Relative Consumption [%]"))
+
+#total meat consumption by type faceted by country
+M_T_C <- ggplot(top4_summary, aes(x = subject, y = mean_consumption, fill = location)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_y_continuous(sec.axis = sec_axis(trans = (~./total), labels = scales::percent, name = "Relative Consumption [%]"))
+
+
+grid.arrange(M_C, M_T, M_C_T, M_T_C, nrow= 2, ncol = 2)
+```
+
+
+
+[^1] OECD (2019), Meat consumption (indicator). doi: 10.1787/fa290fd0-en (Accessed on 04 February 2019). Source: https://data.oecd.org/agroutput/meat-consumption.htm
