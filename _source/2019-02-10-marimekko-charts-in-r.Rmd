@@ -161,7 +161,7 @@ While it is possible to gather useful information from this chart, there are sti
 
 Here is the data displayed differently. 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.height=8, fig.width=12}
 library(gridExtra)
 
 theme_set(theme_classic() +
@@ -177,8 +177,6 @@ ggplot(aes(x = location, y = total_consumption)) +
   scale_y_continuous(sec.axis = sec_axis(trans = (~./total), labels = scales::percent, name = "Relative Consumption [ % ]")) +
   labs(x = "Location", y = "Kg/Capita", title = "Average Annual Meat Consumption per Country", subtitle = "1991-2017")
 
-M_C
-
 #total meat consumption by country, faceted by type
 M_C_T <- top4_summary %>%
   select(location, subject, mean_consumption) %>%
@@ -188,16 +186,11 @@ M_C_T <- top4_summary %>%
   scale_fill_manual("Animal", values = c("grey75", "grey55", "grey38", "black")) +
   labs(x = "Location", y = "Kg/Capita", title = "Average Annual Meat Consumption per Country", subtitle = "1991-2017")
 
-M_C_T
-
-
 #total meat consumption by type
 M_T <- ggplot(top4_summary, aes(x = subject, y = mean_consumption)) +
   geom_bar(stat = "identity", fill = "steelblue") +
   scale_y_continuous(sec.axis = sec_axis(trans = (~./total), labels = scales::percent, name = "Relative Consumption [ % ]")) +
   labs(x = "Animal", y = "Kg/Capita", title = "Average Annual Meat Consumption by Animal", subtitle = "1991-2017")
-
-M_T
 
 #total meat consumption by type faceted by country
 M_T_C <- ggplot(top4_summary, aes(x = subject, y = mean_consumption, fill = location)) +
@@ -205,8 +198,6 @@ M_T_C <- ggplot(top4_summary, aes(x = subject, y = mean_consumption, fill = loca
   scale_y_continuous(sec.axis = sec_axis(trans = (~./total), labels = scales::percent, name = "Relative Consumption [%]")) +
   scale_fill_manual("Location", values = c("steelblue4", "steelblue", "skyblue3", "skyblue2")) +
   labs(x = "Animal", y = "Kg/Capita", title = "Average Annual Meat Consumption by Animal", subtitle = "1991-2017")
-
-M_T_C
 
 grid.arrange(M_C, M_T, M_C_T, M_T_C, nrow= 2, ncol = 2)
 ```

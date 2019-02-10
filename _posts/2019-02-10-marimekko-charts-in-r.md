@@ -212,7 +212,7 @@ While it is possible to gather useful information from this chart, there are sti
 
 Here is the data displayed differently. 
 
-![plot of chunk unnamed-chunk-11](/figure/source/2019-02-10-marimekko-charts-in-r/unnamed-chunk-11-1.png)![plot of chunk unnamed-chunk-11](/figure/source/2019-02-10-marimekko-charts-in-r/unnamed-chunk-11-2.png)![plot of chunk unnamed-chunk-11](/figure/source/2019-02-10-marimekko-charts-in-r/unnamed-chunk-11-3.png)![plot of chunk unnamed-chunk-11](/figure/source/2019-02-10-marimekko-charts-in-r/unnamed-chunk-11-4.png)![plot of chunk unnamed-chunk-11](/figure/source/2019-02-10-marimekko-charts-in-r/unnamed-chunk-11-5.png)
+![plot of chunk unnamed-chunk-11](/figure/source/2019-02-10-marimekko-charts-in-r/unnamed-chunk-11-1.png)
 
 Feedback, questions, or thoughts? Leave a comment below! Thanks for reading!
 
