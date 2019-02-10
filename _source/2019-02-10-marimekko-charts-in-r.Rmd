@@ -161,7 +161,7 @@ While it is possible to gather useful information from this chart, there are sti
 
 Here is the data displayed differently. 
 
-```{r, echo=FALSE, fig.height=8, fig.width=12}
+```{r, echo=FALSE}
 library(gridExtra)
 
 theme_set(theme_classic() +
