@@ -34,7 +34,7 @@ exclude: ['*.Rmd']
 feed:
   path: atom.xml
 
- 
+
 paginate: 5
 paginate_path: /page:num/
 
@@ -80,7 +80,7 @@ defaults:
     values:
       layout: post
       share: true
-## Collection defaults 
+## Collection defaults
 #  - scope:
 #      path: "_tutorials"
 #      type: tutorials
@@ -113,3 +113,4 @@ footer_links:
   - title: LinkedIn
     url: https://www.linkedin.com/in/jpwalker625/
     icon: fab fa-linkedin
+

@@ -216,4 +216,4 @@ Here is the data displayed differently.
 
 Feedback, questions, or thoughts? Leave a comment below! Thanks for reading!
 
-[^1] OECD (2019), Meat consumption (indicator). doi: 10.1787/fa290fd0-en (Accessed on 04 February 2019). Source: https://data.oecd.org/agroutput/meat-consumption.htm
+[^1]: OECD (2019), Meat consumption (indicator). doi: 10.1787/fa290fd0-en (Accessed on 04 February 2019). Source: <https://data.oecd.org/agroutput/meat-consumption.htm>

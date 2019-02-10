@@ -204,4 +204,4 @@ grid.arrange(M_C, M_T, M_C_T, M_T_C, nrow= 2, ncol = 2)
 
 Feedback, questions, or thoughts? Leave a comment below! Thanks for reading!
 
-[^1] OECD (2019), Meat consumption (indicator). doi: 10.1787/fa290fd0-en (Accessed on 04 February 2019). Source: https://data.oecd.org/agroutput/meat-consumption.htm
+[^1]: OECD (2019), Meat consumption (indicator). doi: 10.1787/fa290fd0-en (Accessed on 04 February 2019). Source: <https://data.oecd.org/agroutput/meat-consumption.htm>
