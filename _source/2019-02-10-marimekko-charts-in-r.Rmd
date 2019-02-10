@@ -161,7 +161,7 @@ While it is possible to gather useful information from this chart, there are sti
 
 Here is the data displayed differently. 
 
-```{r, echo=FALSE}
+```{r, fig.width= 10, echo=FALSE}
 library(gridExtra)
 
 theme_set(theme_classic() +
@@ -199,7 +199,7 @@ M_T_C <- ggplot(top4_summary, aes(x = subject, y = mean_consumption, fill = loca
   scale_fill_manual("Location", values = c("steelblue4", "steelblue", "skyblue3", "skyblue2")) +
   labs(x = "Animal", y = "Kg/Capita", title = "Average Annual Meat Consumption by Animal", subtitle = "1991-2017")
 
-grid.arrange(M_C, M_T, M_C_T, M_T_C, nrow= 2, ncol = 2)
+grid.arrange(M_C, M_T, M_C_T, M_T_C, nrow= 2, ncol = 2, widths = c(2,2))
 ```
 
 Feedback, questions, or thoughts? Leave a comment below! Thanks for reading!
