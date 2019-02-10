@@ -261,10 +261,6 @@ ggplot(mtcars, aes(mpg, fct_reorder(f = model, x = mpg))) +
   theme(plot.title = element_text(size = 10, face = 'bold'))
 ```
 
-```
-## Error in check_factor(.f): argument ".f" is missing, with no default
-```
-
 ![plot of chunk fct_reorder](/figure/source/2018-11-07-forcats_tutorial/fct_reorder-1.png)
 
 

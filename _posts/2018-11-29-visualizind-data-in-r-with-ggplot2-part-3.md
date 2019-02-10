@@ -735,7 +735,7 @@ houston <- get_map(location = "Houston, Texas", source = "stamen", maptype = "to
 ```
 
 ```
-## Error in download.file(url, destfile = destfile, quiet = !messaging, mode = "wb"): cannot open URL 'https://maps.googleapis.com/maps/api/staticmap?center=Houston,+Texas&zoom=10&size=640x640&scale=2&maptype=terrain'
+## Error in download.file(url, destfile = tmp, quiet = !messaging, mode = "wb"): cannot open URL 'http://maps.googleapis.com/maps/api/staticmap?center=Houston,+Texas&zoom=10&size=640x640&scale=2&maptype=terrain&sensor=false'
 ```
 
 ```r
@@ -760,7 +760,7 @@ str(crime)
 
 ```
 ## 'data.frame':	86314 obs. of  17 variables:
-##  $ time    : POSIXct, format: "2009-12-31 22:00:00" "2009-12-31 22:00:00" ...
+##  $ time    : POSIXt, format: "2010-01-01 06:00:00" "2010-01-01 06:00:00" ...
 ##  $ date    : chr  "1/1/2010" "1/1/2010" "1/1/2010" "1/1/2010" ...
 ##  $ hour    : int  0 0 0 0 0 0 0 0 0 0 ...
 ##  $ premise : chr  "18A" "13R" "20R" "20R" ...
@@ -820,7 +820,7 @@ houston <- get_map(location = "Houston, Texas", source = "google", maptype = 'te
 ```
 
 ```
-## Error in download.file(url, destfile = destfile, quiet = !messaging, mode = "wb"): cannot open URL 'https://maps.googleapis.com/maps/api/staticmap?center=Houston,+Texas&zoom=10&size=640x640&scale=2&maptype=terrain&language=en-EN'
+## Error in download.file(url, destfile = tmp, quiet = !messaging, mode = "wb"): cannot open URL 'http://maps.googleapis.com/maps/api/staticmap?center=Houston,+Texas&zoom=10&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false'
 ```
 
 ```r
@@ -850,7 +850,7 @@ houston <- get_map(location = bbox, zoom = 11,  maptype = 'terrain')
 ```
 
 ```
-## Error in download.file(url, destfile = destfile, quiet = !messaging, mode = "wb"): cannot open URL 'https://maps.googleapis.com/maps/api/staticmap?center=29.741517,-95.405337&zoom=11&size=640x640&scale=2&maptype=terrain&language=en-EN'
+## Error in download.file(url, destfile = tmp, quiet = !messaging, mode = "wb"): cannot open URL 'http://maps.googleapis.com/maps/api/staticmap?center=29.741517,-95.405337&zoom=11&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false'
 ```
 
 ```r
@@ -902,7 +902,7 @@ saveGIF(expr = {
 ```
 
 ```
-## [1] TRUE
+## [1] FALSE
 ```
 If everything is installed properly, the code above should generate a plot in the R console, and save the animation to the working directory. To get the animation to run in a document such as this, you will need to create a link to the saved animation like this:  
 
@@ -1018,7 +1018,13 @@ You can install it from cran or you can install the development version using: `
 
 ```r
 library(tweenr)
+```
 
+```
+## Error in library(tweenr): there is no package called 'tweenr'
+```
+
+```r
 # Create variables needed for tween_elements
 storms <- storms %>% 
   mutate(date = as.numeric(date - min(date)+1),
@@ -1028,12 +1034,22 @@ storms <- storms %>%
 
 # create a tween_elements object from our storms dataset
 storms_tween <- tweenr::tween_elements(data = storms, time = "date", group = "name", ease = 'ease', nframes = 1000)
+```
 
+```
+## Error in loadNamespace(name): there is no package called 'tweenr'
+```
+
+```r
 p <- ggplot(storms_tween, aes(x = wind, y = pressure, color = .group, size = category, frame = .frame, group = .group), cumulative = T) +
   geom_point()
+```
 
+```
+## Error in ggplot(storms_tween, aes(x = wind, y = pressure, color = .group, : object 'storms_tween' not found
+```
 
-
+```r
 gganimate(p, interval = 0.2, filename = 'storms.gif', convert = "gm convert")
 ```
 
@@ -1095,47 +1111,26 @@ gtab
 ```
 
 ```
-## TableGrob (12 x 11) "layout": 19 grobs
-##     z         cells       name
-## 1   0 ( 1-12, 1-11) background
-## 2   5 ( 6- 6, 4- 4)     spacer
-## 3   7 ( 7- 7, 4- 4)     axis-l
-## 4   3 ( 8- 8, 4- 4)     spacer
-## 5   6 ( 6- 6, 5- 5)     axis-t
-## 6   1 ( 7- 7, 5- 5)      panel
-## 7   9 ( 8- 8, 5- 5)     axis-b
-## 8   4 ( 6- 6, 6- 6)     spacer
-## 9   8 ( 7- 7, 6- 6)     axis-r
-## 10  2 ( 8- 8, 6- 6)     spacer
-## 11 10 ( 5- 5, 5- 5)     xlab-t
-## 12 11 ( 9- 9, 5- 5)     xlab-b
-## 13 12 ( 7- 7, 3- 3)     ylab-l
-## 14 13 ( 7- 7, 7- 7)     ylab-r
-## 15 14 ( 7- 7, 9- 9)  guide-box
-## 16 15 ( 4- 4, 5- 5)   subtitle
-## 17 16 ( 3- 3, 5- 5)      title
-## 18 17 (10-10, 5- 5)    caption
-## 19 18 ( 2- 2, 2- 2)        tag
-##                                                grob
-## 1                rect[plot.background..rect.118772]
-## 2                                    zeroGrob[NULL]
-## 3            absoluteGrob[GRID.absoluteGrob.118733]
-## 4                                    zeroGrob[NULL]
-## 5                                    zeroGrob[NULL]
-## 6                       gTree[panel-1.gTree.118719]
-## 7            absoluteGrob[GRID.absoluteGrob.118726]
-## 8                                    zeroGrob[NULL]
-## 9                                    zeroGrob[NULL]
-## 10                                   zeroGrob[NULL]
-## 11                                   zeroGrob[NULL]
-## 12 titleGrob[axis.title.x.bottom..titleGrob.118736]
-## 13   titleGrob[axis.title.y.left..titleGrob.118739]
-## 14                                   zeroGrob[NULL]
-## 15                                gtable[guide-box]
-## 16         zeroGrob[plot.subtitle..zeroGrob.118768]
-## 17            zeroGrob[plot.title..zeroGrob.118767]
-## 18          zeroGrob[plot.caption..zeroGrob.118770]
-## 19              zeroGrob[plot.tag..zeroGrob.118769]
+## TableGrob (10 x 9) "layout": 18 grobs
+##     z         cells       name                                      grob
+## 1   0 ( 1-10, 1- 9) background        rect[plot.background..rect.102974]
+## 2   5 ( 5- 5, 3- 3)     spacer                            zeroGrob[NULL]
+## 3   7 ( 6- 6, 3- 3)     axis-l    absoluteGrob[GRID.absoluteGrob.102950]
+## 4   3 ( 7- 7, 3- 3)     spacer                            zeroGrob[NULL]
+## 5   6 ( 5- 5, 4- 4)     axis-t                            zeroGrob[NULL]
+## 6   1 ( 6- 6, 4- 4)      panel               gTree[panel-1.gTree.102930]
+## 7   9 ( 7- 7, 4- 4)     axis-b    absoluteGrob[GRID.absoluteGrob.102943]
+## 8   4 ( 5- 5, 5- 5)     spacer                            zeroGrob[NULL]
+## 9   8 ( 6- 6, 5- 5)     axis-r                            zeroGrob[NULL]
+## 10  2 ( 7- 7, 5- 5)     spacer                            zeroGrob[NULL]
+## 11 10 ( 4- 4, 4- 4)     xlab-t                            zeroGrob[NULL]
+## 12 11 ( 8- 8, 4- 4)     xlab-b titleGrob[axis.title.x..titleGrob.102933]
+## 13 12 ( 6- 6, 2- 2)     ylab-l titleGrob[axis.title.y..titleGrob.102936]
+## 14 13 ( 6- 6, 6- 6)     ylab-r                            zeroGrob[NULL]
+## 15 14 ( 6- 6, 8- 8)  guide-box                         gtable[guide-box]
+## 16 15 ( 3- 3, 4- 4)   subtitle  zeroGrob[plot.subtitle..zeroGrob.102971]
+## 17 16 ( 2- 2, 4- 4)      title     zeroGrob[plot.title..zeroGrob.102970]
+## 18 17 ( 9- 9, 4- 4)    caption   zeroGrob[plot.caption..zeroGrob.102972]
 ```
 
 ```r
@@ -1190,34 +1185,66 @@ We can compute the data for a bagplot and plot one using the `aplpack` package.
 ```r
 # load required package
 library(aplpack)
+```
 
+```
+## Error in library(aplpack): there is no package called 'aplpack'
+```
+
+```r
 # sample the diamonds dataset
 diamonds_subset <- sample_n(tbl = diamonds, size = 500)
 
 # Create bagplot of diamonds dataset: diamonds$carat vs. diamonds$price
 bagplot(x = diamonds_subset$carat, y = diamonds_subset$price)
+```
 
+```
+## Error in eval(expr, envir, enclos): could not find function "bagplot"
+```
+
+```r
 # Get bagplot stats
 bag <- compute.bagplot(x = diamonds_subset$carat, y = diamonds_subset$price)
+```
 
+```
+## Error in eval(expr, envir, enclos): could not find function "compute.bagplot"
+```
+
+```r
 # Examine the variables computed in the bag object.
 names(bag)
 ```
 
 ```
-##  [1] "center"      "hull.center" "hull.bag"    "hull.loop"   "pxy.bag"    
-##  [6] "pxy.outer"   "pxy.outlier" "hdepths"     "is.one.dim"  "prdata"     
-## [11] "xy"          "xydata"
+## Error in eval(expr, envir, enclos): object 'bag' not found
 ```
 
 ```r
 # Highlight components
 points(bag$hull.loop, col = "green", pch = 16)
+```
+
+```
+## Error in points(bag$hull.loop, col = "green", pch = 16): object 'bag' not found
+```
+
+```r
 points(bag$hull.bag, col = "orange", pch = 16)
+```
+
+```
+## Error in points(bag$hull.bag, col = "orange", pch = 16): object 'bag' not found
+```
+
+```r
 points(bag$pxy.outlier, col = "purple", pch = 16)
 ```
 
-![plot of chunk unnamed-chunk-35](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-35-1.png)
+```
+## Error in points(bag$pxy.outlier, col = "purple", pch = 16): object 'bag' not found
+```
 
 The `alpack` package makes it easy to create this bagplot with the built-in function. If were to make this plot using ggplot2, we could make three separate geom layers as in this example:
 
@@ -1225,9 +1252,29 @@ The `alpack` package makes it easy to create this bagplot with the built-in func
 ```r
 # Create data frames from the bag matrices
 hull.loop <- data.frame(x = bag$hull.loop[,1], y = bag$hull.loop[,2])
-hull.bag <- data.frame(x = bag$hull.bag[,1], y = bag$hull.bag[,2])
-pxy.outlier <- data.frame(x = bag$pxy.outlier[,1], y = bag$pxy.outlier[,2])
+```
 
+```
+## Error in data.frame(x = bag$hull.loop[, 1], y = bag$hull.loop[, 2]): object 'bag' not found
+```
+
+```r
+hull.bag <- data.frame(x = bag$hull.bag[,1], y = bag$hull.bag[,2])
+```
+
+```
+## Error in data.frame(x = bag$hull.bag[, 1], y = bag$hull.bag[, 2]): object 'bag' not found
+```
+
+```r
+pxy.outlier <- data.frame(x = bag$pxy.outlier[,1], y = bag$pxy.outlier[,2])
+```
+
+```
+## Error in data.frame(x = bag$pxy.outlier[, 1], y = bag$pxy.outlier[, 2]): object 'bag' not found
+```
+
+```r
 # Finish the ggplot command
 ggplot(diamonds_subset, aes(x = carat,  y = price)) +
   geom_polygon(data = hull.loop, aes(x = x, y = y), fill = "green") +
@@ -1235,7 +1282,9 @@ ggplot(diamonds_subset, aes(x = carat,  y = price)) +
   geom_point(data = pxy.outlier, aes(x = x, y = y), col = "purple", pch = 16, cex = 1.5)
 ```
 
-![plot of chunk unnamed-chunk-36](/figure/source/2018-11-29-visualizind-data-in-r-with-ggplot2-part-3/unnamed-chunk-36-1.png)
+```
+## Error in fortify(data): object 'hull.loop' not found
+```
 
 The plot above is a good starting point, but we can do better. In the process, we will learn how to use the `ggproto` function which can be used to make any new layer you can think of and ultimately build your own plots. `ggproto` takes 4 arguments:
 

@@ -140,23 +140,13 @@ Now the 'All' model appears in the legend but as I mentioned, we lost control ov
 # create a color vector with 4 colors, one for each color we will use in our plot
  
 colors <- c("black", wesanderson::wes_palette(name = 'Darjeeling', 3))
-```
 
-```
-## Error in wesanderson::wes_palette(name = "Darjeeling", 3): Palette not found.
-```
-
-```r
 # add manual color scale to change the colors.
 p + 
   geom_point()+
   geom_smooth(method = "lm") +
   stat_smooth(aes(group = 1, color = "All"), method = "loess", se = F)+
   scale_color_manual("Species Colors", values = colors)
-```
-
-```
-## Error: Insufficient values in manual scale. 4 needed but only 1 provided.
 ```
 
 ![plot of chunk unnamed-chunk-7](/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-7-1.png)
@@ -573,10 +563,6 @@ ggplot(UScereal, aes(x = calories, y = fct_reorder(f = cereal, x = calories, .de
   facet_grid(mfr~., scales = 'free_y', space = 'free_y') +
   scale_x_continuous(breaks = my_breaks) +
   theme(axis.text.y = element_text(size = 8))
-```
-
-```
-## Error in check_factor(.f): argument ".f" is missing, with no default
 ```
 
 <img src="/figure/source/2018-11-27-visualizing-data-in-r-with-ggplot2-part-2/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
