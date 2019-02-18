@@ -33,18 +33,21 @@ In January of 2018, I joined the Bay Area Climbers Coalition as the storage oper
 
 My goal this year is to get more focused about my climbing. I am committed to being more efficient in how I train, and being more specific when setting goals. Unfortunately, I am currently sidelined from climbing having tore my miniscus snowboarding in Whistler a few weeks ago. That doesn't mean I'm useless. There's still training to be done and will continue to do so until I'm back on the wall!
 
+I applied for the North Face sponsored Live Your Dream Grant to get some assistance funding my goal to climb Denali next year.  Standing at 20,310', it is North America's tallest peak. I intend to give it a go via the West Buttress in May 2020 with Rainier Mountaineering International, a reputable guiding service.
+
 ---
 
 ## What I'm
 
 #### Reading
-Last Read: [Eating Animals](https://www.amazon.com/Eating-Animals-Jonathan-Safran-Foer/dp/0316069884) by Jonathan Safran
+Last Read: [Eating Animals](https://www.amazon.com/Eating-Animals-Jonathan-Safran-Foer/dp/0316069884) by Jonathan Safran 
+ 
 Currently Reading: [Everyday Zen](https://www.amazon.com/Everyday-Zen-Love-Work-Plus/dp/0061285897) by Charlotte Joko Beck
 
 #### Listening to
-I've cycled back to all things progressive house/trance and can't get enough of the Anjuna Deep family including:
-Above & Beyond: Check out their podcast Group Therapy 
-
+I've cycled back to all things progressive house/trance and can't get enough of the Anjuna Deep family including: 
+Above & Beyond: Check out their podcast Group Therapy, Oliver Smith, & Yotto
+ 
 Alison Wonderland: Australian Singer/Songwriter/DJ/Producer: She's the real deal and there's no signs of her slowing down. 
  
 
