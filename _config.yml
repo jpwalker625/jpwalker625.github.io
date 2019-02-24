@@ -27,7 +27,7 @@ liquid:
   error_mode: strict
 
 # Build settings
-permalink: /:categories/:title/
+# permalink: /:categories/:title/
 encoding: UTF-8
 markdown: kramdown
 exclude: ['*.Rmd']
