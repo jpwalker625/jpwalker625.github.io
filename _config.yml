@@ -66,7 +66,7 @@ plugins:
 
 # Collections
 collections:
-  tutorials:
+  books:
     output: true
     permalink: /:collection/:path/
 
@@ -81,13 +81,13 @@ defaults:
       layout: post
       share: true
 ## Collection defaults
-#  - scope:
-#      path: "_tutorials"
-#      type: tutorials
-#    values:
-#      layout: post
-#      comments: true
-#      share: true
+  - scope:
+      path: "_books"
+      type: books
+    values:
+      layout: post
+      comments: true
+      share: true
 
 # Site Author Use the _data authors.yml to override these settings
 author:
