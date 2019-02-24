@@ -13,7 +13,9 @@ tags:
 
 
 
-Hello! In this post we're going to explore some data using a Marimekko chart. This type of visualization is also referred to as a mosaic plot or variable-width chart. The chart functions as a two-dimensional plot encoding two categorical variables. The y-axis is split into stacked bars encoding one variable, each adding up to %100. The variable along the x-axis is divided into segments of varying widths. The chart got its name from the Finnish design company popular for its brightly colored prints and fabrics for which it resmebles in aesthetic and design. Marimekko has been widely adopted within business and management consultancy industries and is generally used to display financial data. This visualization can be difficult to interpret if there are too many segments or making comparisons across boxes since there is no common baseline. As such, it is best to use this chart for displaying a general overview of the data you are working with.
+Hello! In this post we're going to explore some data using a Marimekko chart. 
+
+This type of visualization is also referred to as a mosaic plot or variable-width chart. The chart functions as a two-dimensional plot encoding two categorical variables. The y-axis is split into stacked bars encoding one variable, each adding up to %100. The variable along the x-axis is divided into segments of varying widths. The chart got its name from the Finnish design company popular for its brightly colored prints and fabrics for which it resmebles in aesthetic and design. Marimekko has been widely adopted within business and management consultancy industries and is generally used to display financial data. This visualization can be difficult to interpret if there are too many segments or making comparisons across boxes since there is no common baseline. As such, it is best to use this chart for displaying a general overview of the data you are working with.
 
 Rather than working with financial data, we're going to be looking at data gathered from the OECD - The Organisation for Economic Co-operation and Development - on global meat consumption. Meat consumption is considered to be the leading cause of global climate change and is a topic I am passionate about. As a result, I thought this would be an interesting topic to explore. Let's get started!
 
@@ -214,6 +216,6 @@ Here is the data displayed differently.
 
 ![plot of chunk unnamed-chunk-11](/figure/source/2019-02-10-marimekko-charts-in-r/unnamed-chunk-11-1.png)
 
-Feedback, questions, or thoughts? Leave a comment below! Thanks for reading!
+Feedback, questions, or thoughts? Leave a comment below. Thanks for reading!
 
 [^1]: OECD (2019), Meat consumption (indicator). doi: 10.1787/fa290fd0-en (Accessed on 04 February 2019). Source: <https://data.oecd.org/agroutput/meat-consumption.htm>
