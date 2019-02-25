@@ -1,12 +1,8 @@
 ---
 title: The Rock Warriors Way
-image: 
-  path:
-  thumbnail: /img/Charles_Hands.jpg
-  caption: 
 ---
 
-Date Read: September 2018
+Date Read: September 2018  
 Rating: 9/10
 
 ---

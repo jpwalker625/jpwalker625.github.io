@@ -1,9 +1,5 @@
 ---
 title: "Everyday Zen"
-image: 
-  path:
-  thumbnail: /img/lotus_flower.jpg
-  caption: 
 ---
 Date Read: January 2019  
 Rating: 10/10
