@@ -1,0 +1,24 @@
+---
+title: Statistical Modeling
+author: JW
+date: '2019-02-26'
+slug: statistical-modeling
+categories: []
+tags:
+  - R
+  - modeling
+---
+
+**Modeling is a process.**
+
+Starting with an **idea**, you...
+   
+* Design a model  
+* Train the model using data  
+* Evaluate the model using new data  
+* Test the model performance by comparing to other models
+* Interpret how the model challenges your ideas...
+
+This process can be cyclical and your model interpretations may lead to new ideas or models.
+
+
