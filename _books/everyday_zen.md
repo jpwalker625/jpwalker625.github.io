@@ -1,5 +1,6 @@
 ---
-title: "Everyday Zen"
+title: Everyday Zen
+published: true
 ---
 Date Read: January 2019  
 Rating: 10/10
@@ -164,3 +165,130 @@ The true self is something like instinct. It serves not to benefit myself, or so
 Practice brings us into that undramatic space where things are just as they are - just functioning.
 
 # V. Suffering
+
+## True Suffering & False Suffering
+Suffering comes from the latin "suf" - sub, under. "fer from the latin verb "ferre" to bear. So suffering is literally to bear under something. False suffering is a product of conceptualization. When we form opinions about something and fail to realize that these opinions are not absolute truth, we suffer. **This is false suffering**.
+
+Complete opennness, complete vulnerability to life is the only satisfactory way to living our life. -p108
+
+Our practice is focused on being in the present moment. Accepting things for what they are, being in the suffering. 
+
+"Life is Suffering" -Buddha
+
+## Renunciation
+It is not about giving things up, but accepting that they go away.
+
+Life is impermanent. Impermenance is perfection. Yet we are constantly resisting change. We do not see life as it is; we resist practice. We are blinded by the illusion of what we want, slaves to our emotions, holding on to what we think life should be.
+
+Practice is detachment from this perception so that we can see things as they truly are.
+
+What keeps us from practice?
+
+* Unawareness that all practice has a strong element of resistance 
+* Lack of honesty about who we are
+* Being impressed and sidetracked by our little opening as they occur
+* <mark>Little understanding of the magnitude of the task we have embarked upon ~ it is unending</mark>
+* Saying but not doing
+
+"He who knows does not say, and he who says does not know." p114
+
+## It is Okay
+Okay is the enlightened state - being okay, even in a terrible, undesirable situation. To live with the circumstances that life brings to you.
+
+... we often wonder how we will die. The key is not to learn to die bravely, but to learn not to need to die bravely.
+
+The paradox of life: being okay with, and accepting the things that are difficult, uncomfortable, painful, and not okay with.
+
+## Tragedy
+Life is a moral struggle in which we are the protagonist.
+
+<mark>The buddhist parable about the man being chased by a tiger ~ Every moment is our last moment, so appreciate it.</mark>
+
+Practice is more and more about detaching ourselves from this exclusive identification. 
+
+## The Observing Self
+The describable self is composed of the thinking self, emotional self, and functional self. Then there is the observing self. It can not be found nor can it be described. We must observe all aspects of our life through our practice. To observe is to know, and when we know, we can be in control; fully conscious.
+
+3 ways of practice: 
+
+* Concentration in which we take a koan and push hard to break through
+* Opening ourselves to life through observation ~ meticulous attention to the anatomy of the present moment
+* Substituting a positive thought for a negative  
+	* this is helpful but ultimately misses the point of practice (all thoughts are empty, temporary)
+
+Who we are has many faces, but these faces are not who we are -p126
+
+There is no observer. Only observing. The aim of practice is to increase that impersonal space. The space of compassion.
+
+What makes life so frightening  is that we let ourselves be carried away in the garbage of our whirling minds. -p127
+
+# VI. Ideals
+
+## Running In Place
+We only know our lives when we experience them directly. When we escape from what is given, we cannot learn, we cannot grow. Running in place is being in the here and now; accepting your life for what it is.
+
+## Aspiration & Expectation
+
+Aspiration is always satisfying. It is our own tue nature seeking to realize and express itself. Expectation is the search for satisfaction from something outside ourselves. 
+
+"Place no head above your own, and add nothing extra to your life."
+
+## Seeing Through the Superstructure
+
+We build an encasing around our lives like a strawberry dipped in chocolate. This extra layer is opaque, it dims our lives and we think to ourselves we must get rid of this superstructure. But that's not what practice is about. The structure is not real and it is up to us to see through it, as if were a dream.
+
+<mark>It's hard to get that we don't have to get rid of calamity. The calamity is fine. You don't have to like it, but it's fine. Discipline is the light we use to wake ourselves up.</mark>
+
+In this moment, what do we see, and what  do we not see? The question is always the same. Our responsibility  is to experience the reality of our life as it is. And eventually to blame no one. If we blame anyone, we know we're caught.
+
+We're like scientists, working, experimenting with our own life.
+
+## Prisoners of Fear
+We are prisoners of our own accord. The door has always been unlocked but we don't recognize our own freedom because we are blinded by desire. Rather than moving from unconscious selfishness to conscious unselfishness (desire 1 to desire 2), we must observe our state of being.
+
+When we experience ourselves as we are, then out of that death of the ego, out of that withering, the flower blooms. **On a withered tree, the flower blooms.**
+
+## Great Expectations
+
+Let go of and forget your body and mind. Throw your life into the abode of the Buddha. 
+
+Wisdom is to see there is nothing to search for.
+
+# VII. Boundaries
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
