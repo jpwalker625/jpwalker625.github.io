@@ -286,6 +286,7 @@ We are little baby birds sitting in their nest waiting for mommy and daddy to pu
 When we begin to realize our styles of attachment, we can begin to free ourselves from them. Our view of how life is vs. how we expect it to be shatters so that reality can present itself. Only then are we truly free to observe, to be present in the very moment. 
 
 # VIII. Choices
+## From Problems to Decisions
 Life from morning to night is nothing but decisions. But we see life in terms of problems, not decisions. 
 
 	As a man thinketh in his heart, so is he.
@@ -294,11 +295,61 @@ The problem isn't out there, it's here, with who I am.
 
 The knowledge of what needs to be done slowly clarifies with practice. Decisions become just that, decisions.
 
-	<mark>A tenth of an inch of difference, and heaven and earth are set apart.</mark>
+	A tenth of an inch of difference, and heaven and earth are set apart.
 
 From an absolute point of view, nothing could set it apart, but from a relative standpoint, something doesn't feel right. There is a separation.
 
-##
+## Turning Point
+We often feel that for our lives to have a new start, the old one must be renounced. There are many misconceptions about renunciation. It is nothing but non-attachment. 
+
+	To study the self is to forget the self.
+
+## Shut the Door
+Freedom is the willingness to risk being vulnerable to life.  When we are in a n unpleasant and restrictive situation, we leave a door open so that we can escape. But we must shut the door and face things as they are.
+
+Pain is a direct experience of life itself. But suffering is experienced when you try and avoid experiencing the pain.
+
+## Commitment
+Commitment is a capacity. And it grows as muscles grow; by being exercised.
+
+True love and commitment have no what-ifs. They are not shaken by passing circumstances.
+Shakespeare:
+
+	Love is not love which alters when it alteration finds
+
+Commitment is shutting the door, not leaving room for escape.
+
+# IX. Service
+## Thy Will be Done
+Before I can understand thy will, I must begin to see the illusion of my will; I want, I want I want.
+
+Work vs. Vocation
+
+Vocation is a summons or calling upon
+
+All of our lives bring problems - or are we given opportunities?
+
+## No Exchange
+When action is backward, it becomes manipulative. It is based on a concept or internal thought. We must have concepts in order to function. The problem occurs when we believe they are the truth.
+
+<mark>We are always expecting an exchange for our actions. This is an error. What we expect, we rarely get.</mark>
+
+Disappointment is our one true friend on the path of the Dharma. It presents itself everytime one's expectations are failed to be met. This is an opportunity for learning and practicing how to be with that disappointment.
+
+Action that comes from experience - sensory input - is non-manipulative. A life of compassion is non-manipulative. A life of no exchange. 
+
+## The Parable of Mushin
+Joe - lived in a town called hope. His buddhist name, Mushin. He was stubborn. Eventually he gets fired from his job. His wife leaves him. But he was not one to give up. On the contrary he was even more convicted to find the path of enlightenment.
+
+Joe goes to the bookstore and find the book "How to catch the train to enlightenment". So he follows the books directions and goes to the train station. Day in and day out he tries to catch the train but it never stops. Soon, others come to the train station with the same notion. 
+
+Overtime a community forms at the train station and Joe realizes that many are neglecting their children so he begins to care for them. At first he is annoyed because they are taking time away from himself, trying to catch the train but he knows that caring for the children is the most important thing. So it goes on for Joe, caring for the children for years and years. Over time he begins to stop asking the questions that once plagued him. He begins to love all the others at the train station.
+
+One night Joe decided to sit, all night. He hears the whooshing of the train and as he opens his eyes, the train stops in front of him. In this moment Joe realizes he had been on the train the whole time. In fact, he was the train.
+
+	There was no need to catch the train. Nothing to realize. Nowhere to go. Just the wholeness of life itself. 
+    All the ancient questions that were no questions answered themselves. 
+    And at last the train evaporated, and there was just an old man sitting the night away.
 
 
 
