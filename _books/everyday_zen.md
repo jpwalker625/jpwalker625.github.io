@@ -17,7 +17,9 @@ Hard coal - anthracite - burns clean. This is what we strive to "burn" our atten
 
 Soft coal - lignite - is the reality of how we utilize our attention. Distracted, messy and impure, often wasteful. It simply means the burning in our life is not clean.
 
-From the bible: *He is like a refiner's fire* - p31
+From the bible: 
+
+	He is like a refiner's fire -p31
 
 Attention is rthe cutting, burning, and our practice is to use that word as much as we can. p32
 
@@ -29,7 +31,7 @@ Quiet the mind, increase the air intake, allow the fire to roar.
 
 Be patient. Having an "enlightenment" experience too soon is not necessarily healthy.
 
-"On a withered tree, a flower blooms" -p39
+	On a withered tree, a flower blooms -p39
 
 The longer we practice, the more minimal this need becomes. The love becomes greater, and the need, less. We can't love something we need" -p.39
 
@@ -173,7 +175,7 @@ Complete opennness, complete vulnerability to life is the only satisfactory way 
 
 Our practice is focused on being in the present moment. Accepting things for what they are, being in the suffering. 
 
-"Life is Suffering" -Buddha
+	Life is Suffering -Buddha
 
 ## Renunciation
 It is not about giving things up, but accepting that they go away.
@@ -190,7 +192,7 @@ What keeps us from practice?
 * <mark>Little understanding of the magnitude of the task we have embarked upon ~ it is unending</mark>
 * Saying but not doing
 
-"He who knows does not say, and he who says does not know." p114
+		He who knows does not say, and he who says does not know. p114
 
 ## It is Okay
 Okay is the enlightened state - being okay, even in a terrible, undesirable situation. To live with the circumstances that life brings to you.
@@ -214,7 +216,7 @@ The describable self is composed of the thinking self, emotional self, and funct
 * Concentration in which we take a koan and push hard to break through
 * Opening ourselves to life through observation ~ meticulous attention to the anatomy of the present moment
 * Substituting a positive thought for a negative  
-	* this is helpful but ultimately misses the point of practice (all thoughts are empty, temporary)
+	+ this is helpful but ultimately misses the point of practice (all thoughts are empty, temporary)
 
 Who we are has many faces, but these faces are not who we are -p126
 
@@ -231,7 +233,7 @@ We only know our lives when we experience them directly. When we escape from wha
 
 Aspiration is always satisfying. It is our own tue nature seeking to realize and express itself. Expectation is the search for satisfaction from something outside ourselves. 
 
-"Place no head above your own, and add nothing extra to your life."
+	Place no head above your own, and add nothing extra to your life.
 
 ## Seeing Through the Superstructure
 
@@ -255,9 +257,48 @@ Let go of and forget your body and mind. Throw your life into the abode of the B
 Wisdom is to see there is nothing to search for.
 
 # VII. Boundaries
+## The Razor's Edge
+When we are embedded in life, there is simply seeing, hearing, smelling, touching, thinking. There is nothing to realize because we are life itself, we have no questions about life. -p155
 
+Practice is about learning to walk the razor's edge. It is the experiencing of what the moment is. Not being searated by the thoughts that occur.
 
+There is no past apart from right now. The past is who we are at this moment. 
 
+## New Jersey Does Not Exist
+We think not in terms of work that needs to be done for life, but in terms of how we can serve our separate self, an enterprise that never occurs to a white blood cell.
+
+We draw boundaries in our lives separating you from me and everything else. I'm New Jersey and you are New York. From a bird's eye view, there are no boundaries. In reality, we are the same. And we go our whole lives like this, pasting maps over reality, living life muddled and confused at times, questioning who we are, our purpose. 
+
+Paradoxically, this confusion is the clarity itself. To be conscious of your confusion, your questions allow you to be in the moment and to slowly get back on track to living and not questioning life. <mark>The white blood cell does not question its purpose. It goes right on cleaning your arteries with all its energy for its entire life. It has a function; it knows what to do.</mark>
+
+## Religion
+The definition of religion ~ to bind back, to bind man to the gods
+
+Sadly enough, some of us die without ever having lived, because we're so obsessed with trying to avoid being hurt. We are caught within the barrier of emotion thought. Reactions that separate us from the rest of life. <mark>We vacillate between two poles. Conformity and non-conformity, each a form of slavery.</mark>
+
+Until we understand the riddle, we are caught in it.The strength of our practice and the ability to communincate our practice to others lies in beinng ourselves.
+
+## Enlightenment
+It is not a picture, but a shattering of all our pictures.
+
+We are little baby birds sitting in their nest waiting for mommy and daddy to put food in their beaks... except that we hide our greed, the baby birds do not.
+
+When we begin to realize our styles of attachment, we can begin to free ourselves from them. Our view of how life is vs. how we expect it to be shatters so that reality can present itself. Only then are we truly free to observe, to be present in the very moment. 
+
+# VIII. Choices
+Life from morning to night is nothing but decisions. But we see life in terms of problems, not decisions. 
+
+	As a man thinketh in his heart, so is he.
+
+The problem isn't out there, it's here, with who I am.
+
+The knowledge of what needs to be done slowly clarifies with practice. Decisions become just that, decisions.
+
+	<mark>A tenth of an inch of difference, and heaven and earth are set apart.</mark>
+
+From an absolute point of view, nothing could set it apart, but from a relative standpoint, something doesn't feel right. There is a separation.
+
+##
 
 
 
