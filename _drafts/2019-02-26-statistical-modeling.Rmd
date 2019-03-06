@@ -21,4 +21,25 @@ Starting with an **idea**, you...
 
 This process can be cyclical and your model interpretations may lead to new ideas or models.
 
+Reasons for using statistical models:
+  
+* Make predictions about an outcome 
+* Run experiments to study relationships between variables 
+* Explore data to identify relationships among variables 
+
+Basic choices of model architecture:
+
+* categorical response variable - rpart()
+* numeric response variable - lm() or rpart()
+
+lm() is used for gradual, proportional relationships where as rpart is good dor dichotomous, discontinuous relationships)
+
+Assess prediction performance between models by examine the mean squared error
+
+mean((actual - predicted)^2)
+
+Beware of useless variables. The model with the extra predictor will have a lower MSE even if the added variable is completely garbage.
+
+**Cross Validation** 
+
 

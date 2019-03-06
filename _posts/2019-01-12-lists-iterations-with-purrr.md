@@ -25,13 +25,7 @@ Hello and welcome to the tutorial on *Lists and Iterations with `Purrr`*. `Purrr
 #load required libraries
 library(tidyverse)
 library(repurrrsive)
-```
 
-```
-## Error in library(repurrrsive): there is no package called 'repurrrsive'
-```
-
-```r
 #load sw_species dataset from repurrrsive
 data("sw_species")
 
@@ -40,7 +34,22 @@ glimpse(sw_species[[2]])
 ```
 
 ```
-## Error in glimpse(sw_species[[2]]): object 'sw_species' not found
+## List of 15
+##  $ name            : chr "Yoda's species"
+##  $ classification  : chr "mammal"
+##  $ designation     : chr "sentient"
+##  $ average_height  : chr "66"
+##  $ skin_colors     : chr "green, yellow"
+##  $ hair_colors     : chr "brown, white"
+##  $ eye_colors      : chr "brown, green, yellow"
+##  $ average_lifespan: chr "900"
+##  $ homeworld       : chr "http://swapi.co/api/planets/28/"
+##  $ language        : chr "Galactic basic"
+##  $ people          : chr "http://swapi.co/api/people/20/"
+##  $ films           : chr [1:5] "http://swapi.co/api/films/5/" "http://swapi.co/api/films/4/" "http://swapi.co/api/films/6/" "http://swapi.co/api/films/3/" ...
+##  $ created         : chr "2014-12-15T12:27:22.877000Z"
+##  $ edited          : chr "2014-12-20T21:36:42.148000Z"
+##  $ url             : chr "http://swapi.co/api/species/6/"
 ```
 
 As shown above, we can use double brackets to subset an item or element in a list. In the case of the `sw_species` list, the second element corresponds to another list composed of information for Yoda's species.
@@ -54,7 +63,7 @@ names(sw_species)
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'sw_species' not found
+## NULL
 ```
 
 ## Mapping
@@ -67,7 +76,7 @@ Our first task will be to apply names to each element using the `$name` subeleme
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'sw_species' not found
+## [1] "Hutt"
 ```
 
 ```r
@@ -76,7 +85,10 @@ names(sw_species)
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'sw_species' not found
+##  [1] "Hutt" NA     NA     NA     NA     NA     NA     NA     NA     NA    
+## [11] NA     NA     NA     NA     NA     NA     NA     NA     NA     NA    
+## [21] NA     NA     NA     NA     NA     NA     NA     NA     NA     NA    
+## [31] NA     NA     NA     NA     NA     NA     NA
 ```
 
 This is painstakingly tedious and inefficent. One could use a for loop to do this, but there's an even better way. 
@@ -90,28 +102,27 @@ First, we'll create a list of species names. Map is useful in that the .f argume
 species_names <- map(sw_species, "name")
 ```
 
-```
-## Error in map(sw_species, "name"): object 'sw_species' not found
-```
-
 Now we'll apply the species names to the `sw_species` list.
 
 
 ```r
 sw_species <- set_names(sw_species, species_names)
-```
 
-```
-## Error in typeof(x): object 'sw_species' not found
-```
-
-```r
 #examine the names of sw_species
 names(sw_species)
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'sw_species' not found
+##  [1] "Hutt"           "Yoda's species" "Trandoshan"     "Mon Calamari"  
+##  [5] "Ewok"           "Sullustan"      "Neimodian"      "Gungan"        
+##  [9] "Toydarian"      "Dug"            "Twi'lek"        "Aleena"        
+## [13] "Vulptereen"     "Xexto"          "Toong"          "Cerean"        
+## [17] "Nautolan"       "Zabrak"         "Tholothian"     "Iktotchi"      
+## [21] "Quermian"       "Kel Dor"        "Chagrian"       "Geonosian"     
+## [25] "Mirialan"       "Clawdite"       "Besalisk"       "Kaminoan"      
+## [29] "Skakoan"        "Muun"           "Togruta"        "Kaleesh"       
+## [33] "Pau'an"         "Wookiee"        "Droid"          "Human"         
+## [37] "Rodian"
 ```
 
 ```r
@@ -121,7 +132,22 @@ sw_species$Ewok %>%
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'sw_species' not found
+##                             name                   classification 
+##                           "Ewok"                         "mammal" 
+##                      designation                   average_height 
+##                       "sentient"                            "100" 
+##                      skin_colors                      hair_colors 
+##                          "brown"            "white, brown, black" 
+##                       eye_colors                 average_lifespan 
+##                  "orange, brown"                        "unknown" 
+##                        homeworld                         language 
+## "http://swapi.co/api/planets/7/"                        "Ewokese" 
+##                           people                            films 
+## "http://swapi.co/api/people/30/"   "http://swapi.co/api/films/3/" 
+##                          created                           edited 
+##    "2014-12-18T11:22:00.285000Z"    "2014-12-20T21:36:42.155000Z" 
+##                              url 
+## "http://swapi.co/api/species/9/"
 ```
 
 By default, the map function returns elements in the form of a list. However, there are various *flavors* of map which will return different outputs:
@@ -148,7 +174,17 @@ data.frame(culture = map_chr(sw_species, ~.x$language)) %>%
 ```
 
 ```
-## Error in map_chr(sw_species, ~.x$language): object 'sw_species' not found
+##         character        culture
+## 1            Hutt        Huttese
+## 2  Yoda's species Galactic basic
+## 3      Trandoshan           Dosh
+## 4    Mon Calamari Mon Calamarian
+## 5            Ewok        Ewokese
+## 6       Sullustan      Sullutese
+## 7       Neimodian      Neimoidia
+## 8          Gungan   Gungan basic
+## 9       Toydarian      Toydarian
+## 10            Dug         Dugese
 ```
 
 ## More Complex Operations
@@ -219,31 +255,31 @@ map(.x = housing_list, .f = ~.x %>% head)
 
 ```
 ## [[1]]
-##            area      price     sq_ft
-## 1 San Francisco  646921.45 1085.0951
-## 2 San Francisco  755517.52 1051.7969
-## 3 San Francisco 1134824.51 1112.1738
-## 4 San Francisco  569618.42 1103.2617
-## 5 San Francisco 1225399.32  763.9747
-## 6 San Francisco   24070.41 1568.5822
+##            area    price     sq_ft
+## 1 San Francisco 436846.6 1304.4513
+## 2 San Francisco 220175.2  934.5941
+## 3 San Francisco 479857.4 1323.9702
+## 4 San Francisco 956379.4 1487.9882
+## 5 San Francisco 394394.7 1051.3588
+## 6 San Francisco 746208.5  543.3655
 ## 
 ## [[2]]
-##      area     price    sq_ft
-## 1 Oakland  532545.6 1542.220
-## 2 Oakland  920377.7 1221.043
-## 3 Oakland  543510.7 1109.990
-## 4 Oakland  711821.3 1137.898
-## 5 Oakland  997646.5 1597.105
-## 6 Oakland 1708571.4 1708.333
+##      area     price     sq_ft
+## 1 Oakland  795704.2 1350.4617
+## 2 Oakland  800444.6 1072.7275
+## 3 Oakland  528976.2 1216.5846
+## 4 Oakland  661947.1 1269.7766
+## 5 Oakland 1467022.9  948.1095
+## 6 Oakland  542950.2 1389.0760
 ## 
 ## [[3]]
-##       area    price    sq_ft
-## 1 San Jose 203398.1 1053.876
-## 2 San Jose 458297.7 1164.127
-## 3 San Jose 530487.8 1109.404
-## 4 San Jose 209063.3 1117.105
-## 5 San Jose 415793.1 1027.981
-## 6 San Jose 803127.7  948.292
+##       area     price     sq_ft
+## 1 San Jose  674574.3 1313.2285
+## 2 San Jose 1288031.5  853.7149
+## 3 San Jose  625760.2 1093.7647
+## 4 San Jose 1546869.2  983.3692
+## 5 San Jose 1401423.5 1488.4967
+## 6 San Jose  772236.3 1150.3756
 ```
 
 Now that we have the data let's model each area using the map function.
@@ -264,18 +300,18 @@ housing_list %>%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -797438 -185796  -29833  248273  658877 
+## -572842 -177694  -14188  173541  762638 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 723791.82  139329.30   5.195 1.12e-06 ***
-## sq_ft           29.62     112.44   0.263    0.793    
+## (Intercept) 790896.07  140908.27   5.613 1.85e-07 ***
+## sq_ft            2.27     111.29   0.020    0.984    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 341600 on 98 degrees of freedom
-## Multiple R-squared:  0.0007075,	Adjusted R-squared:  -0.009489 
-## F-statistic: 0.06939 on 1 and 98 DF,  p-value: 0.7928
+## Residual standard error: 272000 on 98 degrees of freedom
+## Multiple R-squared:  4.244e-06,	Adjusted R-squared:  -0.0102 
+## F-statistic: 0.0004159 on 1 and 98 DF,  p-value: 0.9838
 ## 
 ## 
 ## [[2]]
@@ -285,18 +321,18 @@ housing_list %>%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -589720 -218907    7794  238216  795423 
+## -801841 -216108  -26790  246719  801744 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 589136.0   133951.4   4.398 2.78e-05 ***
-## sq_ft          189.7      105.4   1.800   0.0749 .  
+## (Intercept) 927962.6   129172.6   7.184 1.34e-10 ***
+## sq_ft         -101.4      103.8  -0.977    0.331    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 319900 on 98 degrees of freedom
-## Multiple R-squared:  0.032,	Adjusted R-squared:  0.02212 
-## F-statistic:  3.24 on 1 and 98 DF,  p-value: 0.07494
+## Residual standard error: 312400 on 98 degrees of freedom
+## Multiple R-squared:  0.009653,	Adjusted R-squared:  -0.0004522 
+## F-statistic: 0.9553 on 1 and 98 DF,  p-value: 0.3308
 ## 
 ## 
 ## [[3]]
@@ -306,18 +342,18 @@ housing_list %>%
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -783525 -243018 -107590  267631 1155758 
+## -707082 -230878  -16980  210823  720399 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)  
-## (Intercept)   433411     183092   2.367   0.0199 *
-## sq_ft            282        150   1.880   0.0631 .
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 1164735.7   126499.3   9.207 6.35e-15 ***
+## sq_ft          -248.6      101.4  -2.452    0.016 *  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 364500 on 98 degrees of freedom
-## Multiple R-squared:  0.03482,	Adjusted R-squared:  0.02497 
-## F-statistic: 3.535 on 1 and 98 DF,  p-value: 0.06306
+## Residual standard error: 307300 on 98 degrees of freedom
+## Multiple R-squared:  0.05781,	Adjusted R-squared:  0.04819 
+## F-statistic: 6.013 on 1 and 98 DF,  p-value: 0.01597
 ```
 
 ### Multiple Lists / Datasets
@@ -329,28 +365,12 @@ First let's create a few lists.
 ```r
 #create a list of names
 names_list <-map(sw_species, .f = ~.$name)
-```
 
-```
-## Error in map(sw_species, .f = ~.$name): object 'sw_species' not found
-```
-
-```r
 #create a list of lifespans
 lifespan_list <- map(sw_species, .f = ~.$average_lifespan)
-```
 
-```
-## Error in map(sw_species, .f = ~.$average_lifespan): object 'sw_species' not found
-```
-
-```r
 #create a list of languages
 language_list <- map(sw_species, .f = ~.$language)
-```
-
-```
-## Error in map(sw_species, .f = ~.$language): object 'sw_species' not found
 ```
 
 Now let's create a dataframe using two of the lists.
@@ -361,7 +381,44 @@ map2_df(.x = names_list, .y = lifespan_list, .f = ~data.frame(names = .x, avg_li
 ```
 
 ```
-## Error in map2(.x, .y, .f, ...): object 'names_list' not found
+##             names avg_lifespan
+## 1            Hutt         1000
+## 2  Yoda's species          900
+## 3      Trandoshan      unknown
+## 4    Mon Calamari      unknown
+## 5            Ewok      unknown
+## 6       Sullustan      unknown
+## 7       Neimodian      unknown
+## 8          Gungan      unknown
+## 9       Toydarian           91
+## 10            Dug      unknown
+## 11        Twi'lek      unknown
+## 12         Aleena           79
+## 13     Vulptereen      unknown
+## 14          Xexto      unknown
+## 15          Toong      unknown
+## 16         Cerean      unknown
+## 17       Nautolan           70
+## 18         Zabrak      unknown
+## 19     Tholothian      unknown
+## 20       Iktotchi      unknown
+## 21       Quermian           86
+## 22        Kel Dor           70
+## 23       Chagrian      unknown
+## 24      Geonosian      unknown
+## 25       Mirialan      unknown
+## 26       Clawdite           70
+## 27       Besalisk           75
+## 28       Kaminoan           80
+## 29        Skakoan      unknown
+## 30           Muun          100
+## 31        Togruta           94
+## 32        Kaleesh           80
+## 33         Pau'an          700
+## 34        Wookiee          400
+## 35          Droid   indefinite
+## 36          Human          120
+## 37         Rodian      unknown
 ```
 
 `pmap` works a little differently. First, we need to create a master list, a *list of lists* so-to-speak.
@@ -370,18 +427,49 @@ map2_df(.x = names_list, .y = lifespan_list, .f = ~data.frame(names = .x, avg_li
 ```r
 #create a master list
 species_info_list <- list(names = names_list, avg_lifespan = lifespan_list, language = language_list)
-```
 
-```
-## Error in eval(expr, envir, enclos): object 'names_list' not found
-```
-
-```r
 pmap_df(.l = species_info_list, .f = function(names, avg_lifespan, language) data.frame(names = names, avg_lifespan = avg_lifespan, language = language))
 ```
 
 ```
-## Error in is.data.frame(.l): object 'species_info_list' not found
+##             names avg_lifespan       language
+## 1            Hutt         1000        Huttese
+## 2  Yoda's species          900 Galactic basic
+## 3      Trandoshan      unknown           Dosh
+## 4    Mon Calamari      unknown Mon Calamarian
+## 5            Ewok      unknown        Ewokese
+## 6       Sullustan      unknown      Sullutese
+## 7       Neimodian      unknown      Neimoidia
+## 8          Gungan      unknown   Gungan basic
+## 9       Toydarian           91      Toydarian
+## 10            Dug      unknown         Dugese
+## 11        Twi'lek      unknown       Twi'leki
+## 12         Aleena           79         Aleena
+## 13     Vulptereen      unknown     vulpterish
+## 14          Xexto      unknown        Xextese
+## 15          Toong      unknown         Tundan
+## 16         Cerean      unknown         Cerean
+## 17       Nautolan           70        Nautila
+## 18         Zabrak      unknown        Zabraki
+## 19     Tholothian      unknown        unknown
+## 20       Iktotchi      unknown     Iktotchese
+## 21       Quermian           86       Quermian
+## 22        Kel Dor           70        Kel Dor
+## 23       Chagrian      unknown        Chagria
+## 24      Geonosian      unknown      Geonosian
+## 25       Mirialan      unknown       Mirialan
+## 26       Clawdite           70       Clawdite
+## 27       Besalisk           75       besalisk
+## 28       Kaminoan           80       Kaminoan
+## 29        Skakoan      unknown        Skakoan
+## 30           Muun          100           Muun
+## 31        Togruta           94        Togruti
+## 32        Kaleesh           80        Kaleesh
+## 33         Pau'an          700        Utapese
+## 34        Wookiee          400     Shyriiwook
+## 35          Droid   indefinite            n/a
+## 36          Human          120 Galactic Basic
+## 37         Rodian      unknown Galactic Basic
 ```
 
 Here's another example using `pmap`. Notice that we don't need to use the function argument to define the list elements.
@@ -397,7 +485,7 @@ pmap(.l = list(a,b,c), .f = sum)
 
 ```
 ## [[1]]
-## [1] 172448
+## [1] 172458.8
 ```
 
 ## Troubleshooting Lists
@@ -525,7 +613,22 @@ sw_species %>%
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'sw_species' not found
+##           Hutt Yoda's species     Trandoshan   Mon Calamari           Ewok 
+##       9.842520       2.165354       6.561680       5.249344       3.280840 
+##      Sullustan      Neimodian         Gungan      Toydarian            Dug 
+##       5.905512       5.905512       6.233596       3.937008       3.280840 
+##        Twi'lek         Aleena     Vulptereen          Xexto          Toong 
+##       6.561680       2.624672       3.280840       4.101050       6.561680 
+##         Cerean       Nautolan         Zabrak     Tholothian       Iktotchi 
+##       6.561680       5.905512       5.905512             NA       5.905512 
+##       Quermian        Kel Dor       Chagrian      Geonosian       Mirialan 
+##       7.874016       5.905512       6.233596       5.839895       5.905512 
+##       Clawdite       Besalisk       Kaminoan        Skakoan           Muun 
+##       5.905512       5.839895       7.217848             NA       6.233596 
+##        Togruta        Kaleesh         Pau'an        Wookiee          Droid 
+##       5.905512       5.577428       6.233596       6.889764             NA 
+##          Human         Rodian 
+##       5.905512       5.577428
 ```
 
 ### Walk
@@ -544,9 +647,8 @@ library(gridExtra) #for arranging plots
 ```
 
 ```
-## [1] "Tokelau"                  "Montserrat"              
-## [3] "Uzbekistan"               "United States of America"
-## [5] "South Sudan"
+## [1] "Romania"         "Puerto Rico"     "Solomon Islands" "Fiji"           
+## [5] "Saudi Arabia"
 ```
 
 ```r
@@ -564,7 +666,7 @@ plots %>%
 ```
 
 ```
-## Error: Can't convert a list to function
+## Error: Can't convert a `gtable` object to function
 ```
 
 ![plot of chunk unnamed-chunk-20](/figure/source/2019-01-12-lists-iterations-with-purrr/unnamed-chunk-20-1.png)
@@ -581,7 +683,13 @@ summary(gh_users)
 ```
 
 ```
-## Error in summary(gh_users): object 'gh_users' not found
+##      Length Class  Mode
+## [1,] 30     -none- list
+## [2,] 30     -none- list
+## [3,] 30     -none- list
+## [4,] 30     -none- list
+## [5,] 30     -none- list
+## [6,] 30     -none- list
 ```
 
 ```r
@@ -590,7 +698,7 @@ names(gh_users)
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'gh_users' not found
+## NULL
 ```
 
 The `gh_users` daatset is comprised of 6 lists each comprised of 30 elements. We also know that the lists do not contain names. Let's take a look at the elements from the first list to see what kind of information is included.
@@ -602,7 +710,37 @@ str(gh_users[[1]])
 ```
 
 ```
-## Error in str(gh_users[[1]]): object 'gh_users' not found
+## List of 30
+##  $ login              : chr "gaborcsardi"
+##  $ id                 : int 660288
+##  $ avatar_url         : chr "https://avatars.githubusercontent.com/u/660288?v=3"
+##  $ gravatar_id        : chr ""
+##  $ url                : chr "https://api.github.com/users/gaborcsardi"
+##  $ html_url           : chr "https://github.com/gaborcsardi"
+##  $ followers_url      : chr "https://api.github.com/users/gaborcsardi/followers"
+##  $ following_url      : chr "https://api.github.com/users/gaborcsardi/following{/other_user}"
+##  $ gists_url          : chr "https://api.github.com/users/gaborcsardi/gists{/gist_id}"
+##  $ starred_url        : chr "https://api.github.com/users/gaborcsardi/starred{/owner}{/repo}"
+##  $ subscriptions_url  : chr "https://api.github.com/users/gaborcsardi/subscriptions"
+##  $ organizations_url  : chr "https://api.github.com/users/gaborcsardi/orgs"
+##  $ repos_url          : chr "https://api.github.com/users/gaborcsardi/repos"
+##  $ events_url         : chr "https://api.github.com/users/gaborcsardi/events{/privacy}"
+##  $ received_events_url: chr "https://api.github.com/users/gaborcsardi/received_events"
+##  $ type               : chr "User"
+##  $ site_admin         : logi FALSE
+##  $ name               : chr "Gábor Csárdi"
+##  $ company            : chr "Mango Solutions, @MangoTheCat "
+##  $ blog               : chr "http://gaborcsardi.org"
+##  $ location           : chr "Chippenham, UK"
+##  $ email              : chr "csardi.gabor@gmail.com"
+##  $ hireable           : NULL
+##  $ bio                : NULL
+##  $ public_repos       : int 52
+##  $ public_gists       : int 6
+##  $ followers          : int 303
+##  $ following          : int 22
+##  $ created_at         : chr "2011-03-09T17:29:25Z"
+##  $ updated_at         : chr "2016-10-11T11:05:06Z"
 ```
 
 Now, let's determine which of the users has the most public repositories.
@@ -615,7 +753,10 @@ map_int(gh_users, ~.$public_repos) %>% #pull out the # of public repositories
 ```
 
 ```
-## Error in map_int(gh_users, ~.$public_repos): object 'gh_users' not found
+## Jennifer (Jenny) Bryan       Thomas J. Leeper                Jeff L. 
+##                    168                     99                     67 
+##           Gábor Csárdi          Maëlle Salmon            Julia Silge 
+##                     52                     31                     26
 ```
 
 And there you have it. Jennifer Bryan has the most repositories with a whopping 168.
@@ -628,42 +769,22 @@ And now for another example. Let's use the `sw_films` and `sw_people` data. Here
 film_by_character <- tibble(filmtitle = map_chr(sw_films, ~.$title)) %>%
     mutate(filmtitle, characters = map(sw_films, ~.$characters)) %>%
     unnest()
-```
 
-```
-## Error in map_chr(sw_films, ~.$title): object 'sw_films' not found
-```
-
-```r
 # Pull out elements from sw_people
 sw_characters <- map_df(sw_people, `[`, c("height", "mass", "name", "url"))
-```
 
-```
-## Error in map(.x, .f, ...): object 'sw_people' not found
-```
-
-```r
 # Join the two new objects
 character_data <- inner_join(film_by_character, sw_characters, by = c("characters" = "url")) %>%
     # Make sure the columns are numbers
     mutate(height = as.numeric(height), mass = as.numeric(mass))
-```
 
-```
-## Error in inner_join(film_by_character, sw_characters, by = c(characters = "url")): object 'film_by_character' not found
-```
-
-```r
 # Plot the heights, faceted by film title
 ggplot(character_data, aes(x = height)) +
   geom_histogram(stat = "count") +
   facet_wrap(~ filmtitle)
 ```
 
-```
-## Error in ggplot(character_data, aes(x = height)): object 'character_data' not found
-```
+![plot of chunk unnamed-chunk-24](/figure/source/2019-01-12-lists-iterations-with-purrr/unnamed-chunk-24-1.png)
 
 ---
 
@@ -848,7 +969,14 @@ discard(sw_species, ~.x$average_lifespan == 'unknown') %>%
 ```
 
 ```
-## Error in map_lgl(.x, .p, ...): object 'sw_species' not found
+##           Hutt Yoda's species      Toydarian         Aleena       Nautolan 
+##         "1000"          "900"           "91"           "79"           "70" 
+##       Quermian        Kel Dor       Clawdite       Besalisk       Kaminoan 
+##           "86"           "70"           "70"           "75"           "80" 
+##           Muun        Togruta        Kaleesh         Pau'an        Wookiee 
+##          "100"           "94"           "80"          "700"          "400" 
+##          Droid          Human 
+##   "indefinite"          "120"
 ```
 
 Predicate functions work well in conjunction with mappers as in the following example:
@@ -916,30 +1044,30 @@ map(housing_list, summary)
 ```
 ## [[1]]
 ##             area         price             sq_ft       
-##  San Francisco:100   Min.   : -45273   Min.   : 640.2  
-##                      1st Qu.: 576518   1st Qu.: 956.3  
-##                      Median : 727350   Median :1148.8  
-##                      Mean   : 759373   Mean   :1201.4  
-##                      3rd Qu.:1012176   3rd Qu.:1423.7  
-##                      Max.   :1433928   Max.   :2230.9  
+##  San Francisco:100   Min.   : 220175   Min.   : 543.4  
+##                      1st Qu.: 615306   1st Qu.:1070.5  
+##                      Median : 780210   Median :1218.2  
+##                      Mean   : 793716   Mean   :1242.4  
+##                      3rd Qu.: 967906   3rd Qu.:1432.8  
+##                      Max.   :1556777   Max.   :1805.0  
 ## 
 ## [[2]]
 ##       area         price             sq_ft       
-##  Oakland:100   Min.   : 187174   Min.   : 220.7  
-##                1st Qu.: 585089   1st Qu.:1027.3  
-##                Median : 806553   Median :1233.5  
-##                Mean   : 823269   Mean   :1234.5  
-##                3rd Qu.:1075599   3rd Qu.:1445.2  
-##                Max.   :1708571   Max.   :2185.9  
+##  Oakland:100   Min.   :  33256   Min.   : 565.1  
+##                1st Qu.: 599379   1st Qu.: 998.2  
+##                Median : 798434   Median :1209.4  
+##                Mean   : 805460   Mean   :1207.6  
+##                3rd Qu.:1048556   3rd Qu.:1427.1  
+##                Max.   :1618562   Max.   :2058.4  
 ## 
 ## [[3]]
 ##        area         price             sq_ft       
-##  San Jose:100   Min.   :-197118   Min.   : 542.6  
-##                 1st Qu.: 521412   1st Qu.:1043.3  
-##                 Median : 710602   Median :1216.9  
-##                 Mean   : 770762   Mean   :1196.3  
-##                 3rd Qu.:1059541   3rd Qu.:1319.2  
-##                 Max.   :1806416   Max.   :1974.5
+##  San Jose:100   Min.   : 163670   Min.   : 541.6  
+##                 1st Qu.: 644449   1st Qu.: 984.7  
+##                 Median : 863856   Median :1171.0  
+##                 Mean   : 863834   Mean   :1210.3  
+##                 3rd Qu.:1073601   3rd Qu.:1424.4  
+##                 Max.   :1599627   Max.   :1906.4
 ```
 
 It appears there are some houses with negative prices. We can't have houses with negative sales prices, that just doesn't make sense. Let's create a `partial` function that discards these negative values.
@@ -979,13 +1107,13 @@ housing_list %>%
 ## # A tibble: 1 x 3
 ##   `San Francisco` Oakland `San Jose`
 ##             <dbl>   <dbl>      <dbl>
-## 1          767501  823269     780539
+## 1          793716  805460     863834
 ## 
 ## $sq_ft
 ## # A tibble: 1 x 3
 ##   `San Francisco` Oakland `San Jose`
 ##             <dbl>   <dbl>      <dbl>
-## 1            1201    1234       1196
+## 1            1242    1208       1210
 ```
 
 
@@ -1024,7 +1152,7 @@ nested_data %>%
 ```
 
 ```
-## Error: Can't convert a list to function
+## Error: Can't convert a `gtable` object to function
 ```
 
 ![plot of chunk unnamed-chunk-34](/figure/source/2019-01-12-lists-iterations-with-purrr/unnamed-chunk-34-1.png)
