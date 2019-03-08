@@ -1,0 +1,82 @@
+---
+title: "Statistical Inference"
+author: "Joseph Walker"
+date: "3/7/2019"
+output: html_document
+---
+
+Welcome to this post on Statistical Inference. 
+
+When we have a problem or question we're trying to answer, it is often impractical or even impossible to gather data on the entire population (political polling data, marketing products, water quality sampling, etc...). **Statistical Inference is a process in which we make conclusions about a population based on a sample from the data.** It draws upon hypothesis testing to make these claims.
+
+The idea behind statistical inference is to understand samples from a hypothetical population in which the Null hypothesis (H~o~), the claim that is not interesting, is true. Most of the time, the goal is to *disprove the null hypothesis* in favor of the Alternative hypothesis (H~a~), the claim corresonding to the question or problem in research.
+
+Let's use a more concrete example. Using the `cancer.in.dogs` datset from the `openintro` package, we want to know whether exposure to the herbicide 2,4-dichlorophenoxyacetic acid (2,4-D) increased the risk of cancer in dogs.
+
+The H~o~ is: There is no relationship between cancer in dogs and exposure to the herbicide.  
+The H~a~ is: Dogs exposed to 2,4-D are more likely to have cancer than dogs not exposed to the herbicide.
+
+
+```{r}
+#load libraries
+library(tidyverse)
+library(openintro)
+
+#examine the datat
+summary(cancer.in.dogs)
+```
+
+This is quite a simple dataset. In the next steps, we will use the `infer` package to model the Null hypothesis and randomize the data to calculate permuted statistics. Permuting the data in this fashion will ensure there is no relationship between the two variables.
+
+```{r}
+#load infer package
+library(infer)
+
+#specify the model
+cid_perm <- cancer.in.dogs %>%
+  specify(response ~ order, success = "cancer") %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000, type = "permute") %>%
+  calculate(stat = "diff in props", order = c("2,4-D", "no 2,4-D"))
+
+#visualize the results
+ggplot(cid_perm, aes(x = stat)) +
+  geom_dotplot(binwidth = .001)
+```
+
+To summarize, we have *specified* our model terms (response ~ order), declared the *hypothesis* that null is true where response and order are not related, *permuted* the data 1000 times, and calculated the differenice in proportions for each of these permuation sets. This leaves us with the dotplot of showing the distribution of differences in proportions for each of the 1000 permutations.
+
+Now let's calculate the difference in proportions for the actual dataset.
+
+```{r}
+actual <- cancer.in.dogs %>%   
+  # Group by 
+  group_by(order) %>%
+  # Summarize proportion of dogs that have cancer
+  summarise(prop_cancer = mean(response == "cancer")) %>%
+  # Summarize difference in proportion of dogs with cancer that were exposed vs. not exposed
+  summarise(obs_diff_prop = diff(prop_cancer)) # "2,4-D" - no "2,4-D"
+  
+# See the result
+actual
+```
+
+Finally we'll combine the permuted data with the observed data.
+```{r}
+cid_perm <- cid_perm %>%
+  mutate(actual_diff = actual$obs_diff_prop)
+
+# Plot permuted differences
+ggplot(cid_perm, aes(x = stat)) + 
+  geom_dotplot(binwidth = .001) +
+  geom_vline(aes(xintercept = actual_diff), color = "red")
+ 
+# Compare permuted differences to observed difference
+cid_perm %>%
+  summarize(sum(actual_diff >= stat))
+```
+
+Out of the 1000 permutations, only 5 were more extreme (less) than our actual observation. In the event the Null hypothesis were true, the likelihood of permuted data similar to the observed data would be greater, however, this is not the case. The observed data is not consistent with the null statistics. Therefore, we must reject the Null hypothesis.
+
+
+
