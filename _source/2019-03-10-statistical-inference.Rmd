@@ -113,7 +113,7 @@ cid_perm %>%
   summarise(count = sum(stat >= quants$q.95))
 ```
 
-What these values tell us is how much of the Null distribution of permuted differences lies above or below the value. In other words, 95% of the Null distribution falls below the q.95 of `r qunats$q.95` and 5% is above it.
+What these values tell us is how much of the Null distribution of permuted differences lies above or below the value. In other words, 95% of the Null distribution falls below the q.95 of `r quants$q.95` and 5% is above it.
 
 Hypothesis testing can be one sided, or two sided. In a one-sided test, we only care about the relationship of the critical region of permuted observations and the actual observation on one of the tails. In a two-sided test, we want to capture the critical region on both tails.
 
@@ -249,9 +249,10 @@ With respect to our dataset, a false positive would be accepting the alternative
 Type 2 Error: Not rejecting the H~o~ when in fact the H~A~ is **TRUE**  
 * This is called **FALSE Negative Rate** and is what we typically want to avoid in most cases.
 
-With respect to our dataset, a galse negative would be failing to reject the null hypothesis, that there is no difference between dogs exposed and not exposed, when in fact there is a difference. 
+With respect to our dataset, a false negative would be failing to reject the null hypothesis, that there is no difference between dogs exposed and not exposed, when in fact there is a difference. 
 
-Type 1 and Type 2 error are important to think about when it comes to hyppthesis testing and can be adjusted based on the confidence level you set. This may or may not be useful depending on the problem you are trying to solve.
+Type 1 and Type 2 error are important to think about when it comes to hypothesis testing and can be adjusted based on the confidence level you set. This may or may not be useful depending on the problem you are trying to solve.
 
 That's it for statistical inference for now. Stay tuned for **part 2** where I'll dive into estimation problems and confidence intervals. Thanks for reading!
+
 ---

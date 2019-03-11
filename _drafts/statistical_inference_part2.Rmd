@@ -1,0 +1,34 @@
+---
+title: "Confidence Intervals"
+author: "Joseph Walker"
+date: "3/10/2019"
+output: html_document
+---
+
+## Comparison vs. Estimation
+
+Comparison questions use hypothesis testing:  
+
+* Which diet will people lose more weight with, on average?
+* Is Candidate A more likely to win than Candidate B?
+* Do left handed people live longer than right handed people, on average?
+
+Estimation questions use confidence intervals to answer questions such as:
+
+* How much weight should participants expect to lose on average?
+* What percentage of voters will vote for candidate x?
+* What is the lifespan of left handed people, on average?
+
+A Confidence Interval is a range of numbers that (hopefully) allows us to capture the true parameter of a population.
+
+## Bootstrapping
+
+Allows us to estimate the distance of the statistic from the parameter.
+
+p^ : *statistic*, proprotion of successes in sample
+
+p : *parameter*, proportion of successes in population
+
+population --> sample --> resample (1,2,3, etc...)
+
+p^* : proportion of successess in the resampled p^ statistic
