@@ -4,7 +4,7 @@ remote_theme: "mmistakes/so-simple-theme"
 locale: en-US
 title: Data Beta
 description: Solving Problems One Data Set At A Time.
-baseurl: ""#
+baseurl: ""
 url: "https://databeta.org"
 logo: # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"

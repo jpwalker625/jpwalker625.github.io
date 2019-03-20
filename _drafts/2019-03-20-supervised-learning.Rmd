@@ -1,0 +1,127 @@
+---
+title: Supervised Learning with R
+author: JW
+date: '2019-03-20'
+slug: supervised-learning-with-r
+categories: []
+tags:
+  - R
+  - supervised learning
+  - modeling
+  - machine learning
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = F, message = F)
+
+library(ggthemes)
+theme_set(theme_economist_white())
+```
+
+Hello! In this tutorial I am going to dive into supervised learning, a process by which we can use **labelled data** (the input) to make predictions about a variable of interest (the output). The most common types of supervised learning algorithms are regression and classification.
+
+Some of the datasets in this tutorial come from the `openintro` and `OIdata` packages. To download, run the following commands: 
+```{r eval=FALSE}
+# install.packages("devtools")
+library(devtools)  
+
+# function from devtools
+install_github("OpenIntroOrg/openintro-r-package", subdir = "OIdata")  
+  
+install_github("OpenIntroOrg/openintro-r-package", subdir = "openintro")
+```
+
+For more information on Open Intro, visit the [website](https://www.openintro.org/) or the [github page](https://github.com/OpenIntroOrg/openintro-r-package).
+
+# What is regression? 
+
+In the statistical sense, regression is predicting an expected value from a set of inputs.
+
+In the causal sense, regression is predicting a numerical outcome from which distinguishes it from classification in which you are predicting a discrete or categorical outcome such as *Yes or No.*
+
+We call the expected outcome the **"dependent variable"**. It is dependent on the inputs, also called the predictors, or **"independent variables".**
+
+The fundamental principles of linear regression:  
+ 
+* Change in Y is linearly proportional to change in X. 
+* Each X contributes additively to Y.
+* Y is the sum of all of the weighted inputs.
+
+A linear regression model requires training data and a formula.
+
+In R, you can specify a formula using the tilde `~` operator. The variable on the left side is always the dependent vartiable and is a function of the right side, the explanatory, or independent value.
+
+Let's have a look at an example.
+```{r}
+#require libraries
+library(tidyverse)
+library(broom)
+library(openintro)
+
+#examine training data from the openintro package
+glimpse(textbooks)
+
+#create a formula
+fmla <- formula('amazNew ~ uclaNew')
+
+#examine the formula
+fmla
+```
+
+The object `fmla` is explicitly of class *formula* and can now bed fed into a function which requires a formula. While it is not necessary to make a formula this way, it can be helpful when dealing with more complicated or multiple formulae.
+
+```{r}
+#create linear model
+textbooks_model <- lm(formula = fmla, data = textbooks)
+
+#examine the model
+textbooks_model
+```
+
+Once you have fit the model, you can examine it various ways. 
+
+The first method is with `base R` `summary()`
+```{r}
+summary(textbooks_model)
+```
+
+Using the `broom` package we can *tidy* up the summary of the model with `glance()`
+```{r}
+glance(textbooks_model)
+```
+
+Using the `stats package` (preloaded in R), we can use the `predict` function to find the predicted value for each x based on a specified model.
+```{r}
+textbooks$predictions <- predict(object = textbooks_model, newdata = textbooks)
+
+head(textbooks)
+```
+
+Let's visualize how the predicted values stack up against the observed values
+```{r}
+ggplot(textbooks, aes(x = predictions, y = amazNew)) +
+  geom_point() +
+  geom_abline(color = "blue")
+```
+
+And we can use the `predict` function to make a prediction for a new dataset or observation(s).
+
+```{r}
+#make dataset of new textbooks to make predictions on
+new_textbooks <- data.frame(uclaNew = c(65, 142))
+
+#make Amazon price predictions on the new textbooks based on UCLA price
+new_textbooks$amazNew <- predict(object = textbooks_model, newdata = new_textbooks)
+
+#get slope and intercept of the model
+intercept <- textbooks_model$coefficients[1]
+slope <- textbooks_model$coefficients[2]
+
+#plot results
+ggplot(textbooks, aes(x = uclaNew, y = amazNew)) +
+  geom_point() +
+  geom_point(data = new_textbooks, aes(x = uclaNew, y = amazNew), color = "red", size = 2.5) +
+  geom_abline(intercept = intercept, slope = slope, color = "blue")
+```
+
+
