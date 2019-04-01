@@ -13,12 +13,9 @@ tags:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = F, message = F)
-
-library(ggthemes)
-theme_set(theme_economist_white())
 ```
 
-Hello! In this tutorial I am going to dive into supervised learning, a process by which we can use **labelled data** (the input) to make predictions about a variable of interest (the output). The most common types of supervised learning algorithms are regression and classification.
+Hello! In this tutorial we'll dive into supervised learning, a process by which we can use **labelled data** (the input) to make predictions about a variable of interest (the output). The most common types of supervised learning algorithms are regression and classification.
 
 Some of the datasets in this tutorial come from the `openintro` and `OIdata` packages. To download, run the following commands: 
 ```{r eval=FALSE}
@@ -32,6 +29,18 @@ install_github("OpenIntroOrg/openintro-r-package", subdir = "openintro")
 ```
 
 For more information on Open Intro, visit the [website](https://www.openintro.org/) or the [github page](https://github.com/OpenIntroOrg/openintro-r-package).
+
+This is a long tutorial! Here is a breakdown of the different sections:
+
+* What is regression?
+* How to evaluate models
+* How to train and test models
+* Issues to consider
+    + categorical variables
+    + interactions
+    + tranformations
+* Dealing with non-linear responses
+* Tree-based methods
 
 # What is regression? 
 
@@ -57,6 +66,10 @@ Let's have a look at an example.
 library(tidyverse)
 library(broom)
 library(openintro)
+library(ggthemes)
+
+#set theme for all plots
+theme_set(theme_economist_white())
 
 #examine training data from the openintro package
 glimpse(textbooks)
@@ -125,3 +138,681 @@ ggplot(textbooks, aes(x = uclaNew, y = amazNew)) +
 ```
 
 
+**Pros of Linear Regression**
+
+* Easy to fit and apply  
+* Concise - (don't need much storage)  
+* Less prone to overfitting (training and test data usually behave similarly)  
+* Interpretable  
+
+**Cons** 
+
+* Can only express linear and additive relationships  
+* Colinearity   
+    + input variables are partially correlated (weight and age)  
+    + coefficients might change sign  
+    + coefficients (or standard errors) look too large  
+    + model may be unstable
+
+# Model Evaluation
+
+In the first section, we learned what a linear regression model is, how to fit the data by using a formula, and to use the model to make predictions on new data. In this section, we'll explore the pararmeters used to evaluate a model's performance.
+  
+In the following examples, we'll explore the `bac` dataset which analyzes the relationship between the blood alcohol content (bac) and number of beers drank for 16 students.
+
+```{r}
+#examine the dataset
+glimpse(bac)
+
+#visualize the relationship between variables of interest
+ggplot(bac, aes(x = Beers, y = BAC)) +
+  geom_point()
+
+#model the BAC as a function of beers drank
+bac_mod <- lm(BAC ~ Beers, bac)
+
+#View the model stats
+glance(bac_mod)
+
+#Make predictions on the original data using our model
+bac$pred <- predict(bac_mod, bac)
+
+#visualize the predicted value vs. the actual value
+ggplot(bac, aes(x = pred, y = BAC)) + 
+  geom_point() +
+  geom_abline(linetype = 2)
+```
+
+### residuals
+  
+The **residuals** tell you how far off the actual value is from the predicted value. They can also tell you whether there are correlations in your data still unaccounted for. You should expect to see no systematic errors in the plot of the residuals meaning that the amount of error is consistent and random for the entire dataset.
+
+The residual for any obervation is calcualted as the difference between the actual and predicted value.
+
+```{r}
+#visualize the difference between the actual and predicted value
+ggplot(bac, aes(x = Beers, y = BAC)) +
+  geom_point() +
+  geom_abline(slope = bac_mod$coefficients[2],
+              intercept = bac_mod$coefficients[1]) +
+  geom_pointrange(aes(ymin = pred, ymax = BAC))
+
+#calculate the residuals
+bac$residuals <- bac$BAC - bac$pred
+
+#visualize the variance of the residuals
+ggplot(bac, aes(x = pred, y = residuals)) +
+  geom_pointrange(aes(ymin= 0, ymax = residuals)) +
+  geom_hline(yintercept = 0, linetype = 3) +
+  ggtitle("residuals vs. linear model prediction")
+```
+
+In the future you can use the following functions to extract the residuals more efficiently.
+
+From the `stats` package: `residuals()`.
+
+From the `modelr` package `add_residuals()`.
+
+### Gain Curve
+  
+**Gain Curve** viualizes the sort order of the predictions. The y-axis plots the cumulative sum of the response variable as a fraction and the x-axis plots the numbers of observations as a fraction. This is useful in situations where the sort order is more important than the actual values.  
+  
+Use the `WVPlots` package for the gain curve function.
+
+```{r}
+library(WVPlots)
+
+GainCurvePlot(frame = bac, xvar = "pred", truthVar = "BAC", title = "Blood Alcohol Content Model")
+```
+
+### RMSE  
+  
+**Root Mean Squared Error**. How much error is associated with the prediction values compared to the actual values. You can compare the RMSE to the SD of the actual values to get an idea of how well your model is at predicting the values.
+
+The RMSE is calculated as:
+
+$$RMSE = \sqrt{mean(residual^2)}$$
+
+Below, we'll compare the RMSE to the standard deviation of the original dataset. Which is better?
+```{r}
+#calculate RMSE
+sqrt(mean(bac$residuals^2))
+
+#calculate sd of the original data
+sd(bac$BAC)
+
+```
+
+### $R^2$
+
+The $R^2$ is a measure of the goodness of fit, or rather, how well the model does at explaining the data. The $R^2$ value ranges between 0 - 1. A value of 0 means that you'd be better off guessing what the estimated value would be. A value of 1 means the model fits well and that you've accounted for all the variation in the data.
+
+$$R^2 = 1 - {RSS \over SS_{tot}} $$
+where 
+
+RSS is the residual sum of squares  (the variance from the model)
+  $$RSS = \sum(y - \hat y)^2$$
+and  
+  
+TSS is the total sum of squares (the variance from the data)
+$$SS_{tot} = \sum(y - \bar y)^2$$
+
+and y =  actual values, $\hat y$ = predicted values, $\bar y$ = mean actual values
+
+```{r}
+#calculate rss
+rss <- sum((bac$BAC - bac$pred)^2)
+
+#calculate tss
+tss <- sum((bac$BAC - mean(bac$BAC))^2)
+
+#calculate r_squared
+r_squared <- 1 - (rss/tss)
+
+#compare r_squared to the r_squared from glance() function and from the correlation coefficient
+r_squared
+
+glance(bac_mod)$r.squared
+
+rho <- cor(y = bac$BAC, x = bac$pred)
+rho^2
+```
+
+# Model Training
+
+In general, a model performs much better on the training data than on data the model has not yet seen. Therefore it is best practice to split the dataset into a **training and test** set. This is recommended when the data is plentiful.
+
+The following examples uses fictitious tips data (from `openintro` package). We seek to model the monetary tip associated with a single group as a function of the bill total.
+```{r}
+#examine the dataset
+glimpse(tips)
+
+#get the number of rows in diamonds
+nrows <- nrow(tips)
+
+#calculate 75% of the nrows 
+target <- round(0.75 * nrows)
+
+#generate a vector of nrow uniform random variables
+gp <- runif(n = nrows)
+
+#split the data into test/training sets
+train <- tips[gp <  0.75, ]
+test <- tips[gp > .75, ]
+
+nrow(train)
+nrow(test)
+
+#create model useing training data
+tips_mod <- lm(tip ~ bill, train)
+
+summary(tips_mod)
+
+#predict tips from bill total on the training set
+train$pred <- predict(tips_mod, train)
+
+#predict tips from bill total on the test set
+test$pred <- predict(tips_mod, test)
+
+#Evaluate the RMSE for each
+rmse <- function(predcol, ycol) {
+  res <- predcol- ycol
+  sqrt(mean(res^2))
+}
+
+(rmse_train <- rmse(train$pred, train$price))
+(rmse_test <- rmse(test$pred, test$price))
+
+#evaluate the $R^2$ for each
+rsq <- function(predcol, ycol) {
+  tss = sum( (ycol - mean(ycol))^2 )
+  rss = sum( (predcol - ycol)^2 )
+  1 - rss/tss
+}
+
+(rsq_train <- rsq(train$pred, train$price))
+(rsq_test <- rsq(test$pred, test$price))
+
+#plot the predicted vs. the outcome for the test data
+ggplot(test, aes(x = pred, y = tip))+
+  geom_point() +
+  geom_abline(color = "blue")
+```
+
+While it is good to know how to calculate the rmse, in the future we can be more efficient by using the `rmse` function from the `modelr` or `ModelMetrics` packages, or `RMSE` from the `caret` package.
+
+### Cross-Validation
+
+If the data set does not have enough data to split off a test set, the **cross-validation** method is preferred.
+
+One way of creating a cross-validation plan is to use the `kWayCrossValidation` function from the `vtreat` package.
+
+**Cross-validation tests the modeling process**
+
+The following examples use the `helmet` dataset from the `openintro` package. The helmet dataset describes the relationship between socioeconomic status measured as the percentage of children in a neighborhood receiving reduced-fee lunches at school(lunch) and the percentage of bike riders in the neighborhood wearing helmets (helmet). 
+
+```{r}
+#install.packages("vtreat")
+library(vtreat)
+library(ModelMetrics) #for rmse function
+
+#examine the helmet dataset
+glimpse(helmet)
+
+#count nrows of helmet
+helmet_rows <- nrow(helmet)
+
+#create cross-validtion model with 3-folds
+splits <- kWayCrossValidation(nRows = helmet_rows, nSplits = 3)
+
+#examine splits
+str(splits)
+
+#run the 3-fold cross-validation plan on the data
+helmet$cv_pred <- 0
+
+for(i in 1:3){
+  split <- splits[[i]]
+  model <- lm(lunch ~ helmet, helmet[split$train, ])
+  helmet$cv_pred[split$app] <- predict(model, helmet[split$app, ])
+}
+
+#predict from a full model
+helmet$pred <- predict(lm(lunch ~ helmet, helmet))
+
+#get RMSE of full model and CV set
+rmse(helmet$pred, helmet$lunch)
+
+rmse(helmet$cv_pred, helmet$lunch)
+```
+
+# Issues to Consider 
+
+## categorical variables
+
+We can use the function `model.matrix` to see how r deals with modeling categorical variables.
+
+**Interpreting model estimates for categorical predictors**
+> The estimated intercept is the value of the response variable for the first category (i.e. the category corresponding to an indicator value of 0). The estimated slope is the average change in the response variable between two categories.
+
+
+```{r}
+library(MASS)
+
+#Examine the dataset
+glimpse(whiteside)
+
+#create formula object
+fmla <- as.formula("Gas ~ Temp + Insul")
+
+#examine the structure of the model
+head(model.matrix(fmla, whiteside, 5))
+```
+
+
+```{r}
+#create a model using the formula
+white_mod <- lm(fmla, whiteside)
+
+#examine the model result
+summary(white_mod)
+
+#predict the BP change for each observation
+whiteside$pred <- predict(white_mod, whiteside)
+
+#plot the predicted BP change vs. actual
+ggplot(whiteside, aes(x = pred, y = Gas)) +
+  geom_point() +
+  geom_abline(color = "blue")
+```
+
+## Interactions
+
+**interactions**
+
+Recall that linear regression assumes an additive relationship between variables. 
+
+plant height ~ sunlight + bacteria
+
+Change in height is the sum of the effects of bacteria and light. Therefore, 
+Change in sunlight causes the same change in height, independent of bacteria. And also,
+change in bactera causes the same change in height, independent of sunlight.
+
+**An interaction occurs when the simultaneous influence of two variables on the outcome is not additive.**
+
+In a formula, you can specify interacion with a colon (:)
+
+`y ~ a:b`
+
+You can specify main effects AND interaction with an asterisk (*)
+
+`y ~ a*b`  
+  
+is the same as
+  
+`y ~ a + b + a:b`
+  
+And finally, you can express the product of two variables using: I(*)
+  
+`y ~ I(a*b)`
+  
+## Transformations
+
+Transformations can take place on the response variable before modeling. A common example of this is log transforming monetary values, which are often log-normally distributed (tend to be skewed with a long tail). The procedure for doing this is as follows:
+
+1) Log the outcome and fit a model  
+2) Maker the predictions in log space  
+3) Transform the predictions back to the original outcome space.
+
+Log-transformed outcomes have multiplicative error. In order to get around this, it is best to determine the relative error.
+
+```{r}
+
+data(Sacramento, package = 'caret')
+
+glimpse(Sacramento)
+
+n <- nrow(Sacramento)
+
+sample <- sample.int(n = n, size = floor(0.7 * n), replace = F) 
+
+sac_train <- Sacramento[sample, ]
+sac_test <- Sacramento[-sample, ]
+
+sac_mod <- lm(price ~ sqft, sac_train)
+
+glance(sac_mod)
+
+sac_test$pred <- predict(sac_mod, sac_test)
+
+sac_test <- sac_test %>%
+  group_by(type) %>%
+  mutate(residual = pred - price,
+         relerr = residual/price)
+
+#compre the rmse to the relative rmse
+sac_test %>%
+group_by(type) %>% 
+  summarize(rmse = sqrt(mean(residual^2)),
+            rmse.rel = sqrt(mean(relerr^2)))
+
+#plot actual vs. predicted for each housing group
+ggplot(sac_test, aes(x = pred, y = price, color = type)) + 
+  geom_point() + 
+  geom_abline() + 
+  facet_wrap(~ type, ncol = 1, scales = "free") + 
+  ggtitle("Outcome vs prediction")
+```
+
+Using the Cars93 dataset, we'll examine how log transforming the response can lead to better model results.
+```{r}
+glimpse(Cars93)
+
+car_n <- nrow(Cars93)
+
+car_sample <- sample.int(n = car_n, size = floor(.7 * car_n), replace = F)
+
+car_train <- Cars93[car_sample, ]
+car_test <- Cars93[-car_sample, ]
+
+#make model based on log value of response variable
+log_mod <- lm(log(Price) ~ Horsepower + MPG.city, car_train)
+
+#make predictions on the test set
+car_test$pred <- predict(log_mod, car_test)
+
+#convert predicted values back to original units
+car_test$pred_logmod <- exp(car_test$pred)
+
+ggplot(car_test, aes(x = pred_logmod, y = Price)) +
+  geom_point() +
+  geom_abline(color = "red")
+```
+
+Now let's compare the log transformed model to a 'normal' model.
+
+```{r}
+#create model based without log transformation
+car_mod <- lm(Price ~ Horsepower + MPG.city, car_train)
+
+#add predictions to the test set
+car_test$pred_carmod <- predict(car_mod, car_test)
+
+#gather the predictions and calculate residuals and relative error
+cars_long <- car_test %>%
+  gather(key = modeltype, value = pred, ... = pred_logmod, pred_carmod) %>%
+  mutate(residual = pred - Price,
+         relerr = residual / Price)
+
+#Now summarise the data to calculate the RMSE, relative RMSE and compare.
+cars_long %>%
+  group_by(modeltype) %>%
+  summarize(rmse = sqrt(mean(residual^2)),
+            relrmse = sqrt(mean(relerr^2)))
+```
+
+As we can see, the RMSE of the log transformed model is higher than the 'normal' model, however, the relative rmse is lower. Let's visualize how both models performed.
+
+```{r}
+#compare the r.squareds of the models
+glance(log_mod)$r.squared
+glance(car_mod)$r.squared
+
+ggplot(cars_long, aes(x = pred, y = Price, group = modeltype, color = modeltype)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F)
+```
+
+## Transforming Input Variables
+
+Sometimes it is necessary to transform the input variable prior to modeling. An example of this would be non-linear data that takes on a "hockey-stick" pattern such as housing data where price is fairly flat for smaller houses but dramatically increases as houses get much larger. 
+
+Quadratic equations are often used in the sciences to transform input variables. 
+
+Can you think of other examples in which it might be necessary to transform the input variable?
+
+# Dealing with Non-Linear Responses
+
+### logistic regression
+Predicting whether an even occurs (yes/no) fals into the realm of classification.   
+
+However, predicting the probability that an event occurs is regression.
+
+For the latter, we can use **logistic regression**, which assumes inputs are additive, and linear in log-odds. The log-odds is the ratio between
+the probability of an event occurring to the probability of the event not occurring.
+
+The `glm` function is used for logistic regression and functions similarly to the `lm` function with the addition of the `family` argument. For logistic regression, the family argument will be set to **binomial**.
+
+To evaluate a logistic regression model, the deviance and pseudo $R^2$ are used. The deviance is similar to the variance.
+
+In the following example, we'll use the `biopsy` dataset from the `MASS` package. The data assesses the biopsies of breast tumours from 699 patients using nine variables which are scored on a scale of 1-10. The outcome or dependent variable for this dataset is *class* which has two levels, "benign" or "malignant".
+
+```{r}
+glimpse(biopsy)
+
+biopsy <- biopsy %>%
+  dplyr::select(-ID)
+
+biopsy.fmla <- as.formula("class ~ .")
+
+logit_mod <- glm(formula = biopsy.fmla, family = binomial(link ="logit"), data = biopsy)
+
+summary(logit_mod)
+
+glance(logit_mod)
+
+(pseudoR2 <- 1 - (glance(logit_mod)$deviance/glance(logit_mod)$null.deviance))
+
+```
+
+Now we can predict the probability of the biopsy class based on the model.
+
+```{r}
+biopsy$pred <- predict(logit_mod, type = "response", newdata = biopsy)
+
+#plot the gain curve
+GainCurvePlot(frame = biopsy, xvar = "pred", truthVar = "class", title = "Biopsy class model")
+```
+
+Another useful way to check the accuracy of a logistic regression model is to make a confusion matrix which will give us the a frequency table of the actual outcomes vs. the predictions (true positive, false positive, false negative, true negative).
+
+The Sensitivity tells you the true positive rate and the Specificity indicates the True Negative rate. **Be careful to know which outcome is tagged as the `positive` result.** The confusion matrix results will tell you.
+
+```{r confusion.matrix}
+#convert predicted probabilities to classes
+biopsy <- biopsy %>%
+  mutate(pred_class = factor(ifelse(biopsy$pred > 0.5, "malignant", "benign"))) 
+
+caret::confusionMatrix(data = biopsy$pred_class,  biopsy$class)
+```
+
+### poisson and quasipoisson regression
+
+Regression to predict count or rate data is a non-linear problem because count/rate data is restricted to being non-negative and integral. Both poisson and quasipoisson are generalized linear models that we can apply to this type of data. Some examples of this would be:  
+ 
+counts: Number of tickets a concert venue sells in a given year. 
+   
+rates: number of website hits/day 
+
+With poisson data, we expect the inputs to be additive and linear in the log(count). The outcome is an integer but the prediction is not necessarily have to be integral.In a poisson distribution, the mean equals the variance. If the variance is much different from the mean, then a quasipoisson model is called for.
+
+In the following example, we'll use the `flights` and `weather` dataset from the `nycflights13` package to make predictions on the number of ontime flights on a daily basis.
+
+```{r}
+library(nycflights13)
+
+summary(flights)
+
+summary(weather)
+```
+
+First let's combine the datsets using the time_hour variable as the connector.
+
+```{r}
+flights_combined <- inner_join(x = flights, y = weather, c("time_hour", "origin", "day", "year", "month", "hour"))
+```
+
+We can use the `arrival_delay` variable to determine whether a flight arrived on time or late. First we need to remove all of the rows with missing data (NAs).
+
+```{r}
+flights_clean <- flights_combined %>%
+  drop_na()
+```
+
+Now let's select the variables of interest and summarise the data.
+
+```{r}
+flights_clean <- flights_clean %>%
+  dplyr::select(month, day, arr_delay, hour, temp, wind_dir, wind_speed, wind_gust, precip, pressure, visib) %>%
+  group_by(month, day) %>%
+  summarise(count = sum(arr_delay <= 0),
+            temp = mean(temp),
+            wind_dir = mean(wind_dir),
+            wind_speed = mean(wind_speed),
+            wind_gust = mean(wind_gust),
+            precip = mean(precip),
+            visib = mean(visib)) %>%
+  ungroup()
+```
+
+Let's split our data into a training and test set. This is a different method than we used before.
+
+```{r}
+set.seed(4352) # for reproducibility
+
+samp <- sample(x = nrow(flights_clean), size = floor(0.7*(nrow(flights_clean))), replace = F)
+
+flights_train <- flights_clean[samp, ]
+flights_test <- flights_clean[-samp, ]
+
+```
+
+Now let's determine if the mean and variance are equal
+
+```{r}
+(mean_flights <- mean(flights_train$count))
+(var_flights <- var(flights_train$count))
+```
+
+Based on these results, we should use a quasipoisson model.
+
+```{r}
+#outcome variable
+outcome <- "count"
+
+#independent variables
+input_vars <- c("temp", "wind_dir", "wind_speed", "precip", "visib")
+
+#the formula
+fmla <- paste(outcome, "~", paste(input_vars, collapse = "+"))
+
+#the model
+flights_model <- glm(formula = fmla, data = flights_train, family = quasipoisson)
+
+#model results
+model_results <- glance(flights_model)
+
+#calculate the model fit
+(flights_pseudoR2 <- 1- (model_results$deviance/model_results$null.deviance))
+```
+
+How does this model compare to a normal linear regression model? Let's find out!
+
+```{r}
+glance(lm(fmla, flights_train))$r.squared
+```
+
+It appears the quasipoisson model is indeed a bit better based on the fitness of each model. Great!
+
+Finally, let's utilize the model we built to make predictions on the test set.
+
+```{r}
+#add predictions to the test set
+flights_test$predictions <- predict(flights_model, newdata = flights_test, type = "response")
+
+#calculate the rmse
+flights_test %>%
+  mutate(resids = predictions - count) %>%
+  summarise(rmse = sqrt(mean(resids^2)))
+```
+And let's visualize the count of actual daily on time flights vs. the predicted amount.
+
+```{r}
+flights_test %>%
+  ggplot(aes(x =predictions, y = count)) +
+  geom_point() +
+  geom_abline(color = "steelblue")
+```
+
+### GAM
+
+Generalized Additive Models.
+
+`mgcv` package for the `gam` function.
+
+`s()` function to denote a non-linear relationship of a ocntinuous variable in your formula.
+
+```{r}
+#install.packages("mgcv")
+library(lubridate)
+library(mgcv)
+
+#exmaine the data
+glimpse(goog)
+#convert date variable to date format
+goog$Date <- as_date(goog$Date)
+
+#convert date variable to continuous sequence 
+#for comptability with splining in formula
+goog$d <- seq(from = nrow(goog), to = 1)
+
+#split data into train and test sets
+n <- nrow(goog)
+
+sample <- sample.int(n = n, size = floor(0.75 * n), replace = F) 
+
+goog_train <- goog[sample, ]
+goog_test <- goog[-sample, ]
+
+
+#visualize the variables of interest in the training set
+ggplot(goog, aes(x = Date)) +
+  geom_point(data = goog_train, aes(y = Close, color = "blue")) +
+  geom_point(data = goog_test, aes (y = Close, color = "green")) +
+  scale_color_manual(name = "dataset", values = c('blue' = 'blue', 'green' = 'green'), labels = c("train", "test"))
+
+#Fit GAM model on training set
+model.gam <- gam(formula = Close ~ s(d), data = goog_train, family = gaussian)
+
+#fit lm model on training set and compare
+model.lm <- lm(formula = Close ~ d, data = goog_train)
+
+summary(model.gam)
+summary(model.lm)
+
+plot(model.gam)
+
+#get predictions for linear model
+goog_test$pred.lm <- predict(model.lm, goog_test)
+
+#get predicitons from gam model
+#use as.numeric to convert matrix output to vector
+goog_test$pred.gam <- as.numeric(predict(model.gam, goog_test))
+
+#gather predictions into a long dataset
+goog_long <- goog_test %>%
+  gather(key = modeltype, value = prediction, ... = pred.lm, pred.gam)
+
+#calculate the rmse
+goog_long %>%
+  mutate(residual = Close - prediction) %>%
+  group_by(modeltype) %>%
+  summarise(rmse = sqrt(mean(residual^2)))
+
+goog_long %>%
+  ggplot(aes(x = Date)) +
+  geom_point(aes(y = Close)) +
+  geom_point(aes(y = prediction, color = modeltype)) +
+  geom_line(aes(y = prediction, color = modeltype, linetype = modeltype)) +
+  scale_color_brewer(palette = "Dark2")
+```
