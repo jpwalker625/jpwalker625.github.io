@@ -115,20 +115,59 @@ phantom fear - general fear of the unknown or fear of things we can't control
 
 stick to the facts - precise wording and readical objectivity are important
 
-Analyzing the Challenge - Risk Assessment
-3 parts:
+Analyzing the Challenge - Risk Assessment  
 
-Assessing the route: holds, features, gear placements, rest points, crux areas, blindspots, etc...
-The fall consequence: Think about the risks of a fall objectively; a fall at your current location, a fall occurring at your next destination (next clip or piece of gear), or somewhere in between. Falling is inevitable so don't avoid assessing the risk.
-The climber: Assess yourself - skills, technique, what you bring to the climb here and now.
-Assessment requires radical honesty - don't make excuses, hide behind illusions, or pretent something that isn't.
+3 parts: 
 
+* Assessing the route: holds, features, gear placements, rest points, crux areas, blindspots, etc... 
+* The fall consequence: Think about the risks of a fall objectively; a fall at your current location, a fall occurring at your next destination (next clip or piece of gear), or somewhere in between. Falling is inevitable so don't avoid assessing the risk. 
+* The climber: Assess yourself - skills, technique, what you bring to the climb here and now.
+  
+Assessment requires radical honesty - don't make excuses, hide behind illusions, or pretend something that isn't.
+  
 Face Reality
-
+ 
 Life is difficult. Difficulty is natural and normal. Embrace it as learning opportunities and understand its relationship to ease.
-
+ 
 Understand and accept the duality of experience.
+ 
+**Action Word: Accept**
+ 
+# Giving 
 
-Action Word: Accept
+The process of giving allows us to focus on what we can give to the effort rather than on the difficulty of the challenge.
 
-Focus on Giving
+We are socialized to have a receiving mindset. **We slip into the notion that we have the right to be happy; that somehow we are entitled to happiness.**
+
+We have the ability to learn and grow. **The more we give, the more we receive **, regardless of the specific outcome.
+
+Receiving mindset saps our focus and ultimately our performance. We become fixated on the things we don't have or feel we should have rather than being grateful for the things we do and committing maximum effort to them.
+
+## Expectations
+
+You're involved in a subtle dance with expectations. Too much expectation leaves little room for growth and learning but too little expectation may prevent you from your highest standard.
+
+Don't become frustrated. If you do, take it as a symptom that you are out of alignment with your goals.
+
+## Focus 
+
+**Action word for the giving process is Focus**
+
+Focus your attention on giving all your effort to the challenge so that you may learn and from from it regardless of the outcome.
+
+Focusing well is an art. We have a tendency to focus on what we don't have and skills we do not possess.
+
+Deficiency Motivation (Wayne Dyer)
+
+Possibility focused thinking, applied to your effort and abilities, creates the giving attitude.
+
+You can't give what you don't have.
+
+## Radical Thinking
+
+Progress comes from possibility and creative thinking. 
+
+**Security is a basecamp. It is not the field in which we play out the adventures of our lives.**
+
+# Choices
+
