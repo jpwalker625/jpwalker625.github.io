@@ -9,17 +9,19 @@ Well hello again. So you want to know what I'm up to at this very moment? You've
   
 NOW is an idea I adopted from [Derek Sivers](https://sivers.org/nowff) whom I first learned about on an episode of the [Tim Ferriss Show](https://tim.blog/podcast/). It's a simple page giving you an update about what I'm currently up to, working on, and/or interested in. 
 
-*Updated: February 2019*
+*Updated: April 2019*
 
 ---
 
+A few random updates.
+
+I had knee surgery on April 16. The procedure went smooth and I am recovering well. I'm looking forward to getting back to my regular routine soon!
+
+I got a new job! As of May 7, 2019 I will be working for Riffyn as a scientist. The company makes software that provides a scientific development environment allowing companies to organize workflows, integrate data, automate data anlytics, and make reporting and collaboration more streamlined. As a scientist, I will be working with our clients to integrate our software and help implement solutions throughout their entire pipeline. 
+
 ## Learning
 
-I'm continuing to develop my coding skills with DataCamp. While there is still so much to explore in R, I feel that now is finally the time to dive into Python. Wish me luck!
-
-Understanding multiple languages is invaluable and I really respect all the people I know who are bi or multi-lingual. I am committing to using the Duolingo app for 20 minutes a day to improve my spanish language skills.
-
-I've been shopping around for a new (used) car. At first, I thought it would make sense to get something like an SUV or smaller cross-over with AWD to accommodate my outdoorsy lifestyle. After driving my friends' VW Golf R, I realized how fun it is to drive something with such power and precision. If I'm going to be driving everyday, I might as well have fun, right? Thus I have begun looking around at similar sporty AWD sedans, mainly the Subaru WRX STI. There's only one catch; they're manual transmission. So it looks like I'll be taking a course or two to hone my stick shifting skills so that I can get out and test drive some cars! 
+I've finally taken the plunge into python! I'm currently using datacamp to hone my skills online through their interactive tutorials and videos. 
 
 ---
 
@@ -31,7 +33,7 @@ In January of 2018, I joined the Bay Area Climbers Coalition as the storage oper
 
 ## Climbing
 
-My goal this year is to get more focused about my climbing. I am committed to being more efficient in how I train, and being more specific when setting goals. Unfortunately, I am currently sidelined from climbing having tore my miniscus snowboarding in Whistler a few weeks ago. That doesn't mean I'm useless. There's still training to be done and will continue to do so until I'm back on the wall!
+My goal this year is to get more focused about my climbing. I am committed to being more efficient in how I train, and being more specific when setting goals.
 
 I applied for the North Face sponsored Live Your Dream Grant to get some assistance funding my goal to climb Denali next year.  Standing at 20,310', it is North America's tallest peak. I intend to give it a go via the West Buttress in May 2020 with Rainier Mountaineering International, a reputable guiding service.
 
@@ -40,22 +42,17 @@ I applied for the North Face sponsored Live Your Dream Grant to get some assista
 ## What I'm
 
 #### Reading
-Last Read: [Eating Animals](https://www.amazon.com/Eating-Animals-Jonathan-Safran-Foer/dp/0316069884) by Jonathan Safran 
- 
-Currently Reading: [Everyday Zen](https://www.amazon.com/Everyday-Zen-Love-Work-Plus/dp/0061285897) by Charlotte Joko Beck
+Last Read: [Everyday Zen](https://www.amazon.com/Everyday-Zen-Love-Work-Plus/dp/0061285897) by Charlotte Joko Beck
+
+Currently Reading: [Open: An Autobiography](https://www.amazon.com/Open-Autobiography-Andre-Agassi/dp/0307388409) by Andre Agassi
 
 #### Listening to
-I've cycled back to all things progressive house/trance and can't get enough of the Anjuna Deep family including: 
-Above & Beyond: Check out their podcast Group Therapy, Oliver Smith, & Yotto
- 
-Alison Wonderland: Australian Singer/Songwriter/DJ/Producer: She's the real deal and there's no signs of her slowing down. 
- 
 
+Marley Carroll. Eclectic DJ, producer who can't be boxed into one genre. I'd say he's closest to trip-hop but that doesn't do him justice. He is a talented dude and his shows are electric. Every button he pushes, every knob he turns, you can hear the effect. His scratching skills are strong and he will have you dancing his entire set. Don't miss a chance to see him live. You won't regret it.
 
 #### Watching
-*  The Americans - one of the greatest TV series of all time, IMO. A gripping tale of two russian spies living the American Dream during the 1980s.
+*  Mr. Robot - Talented Hacker turns terrorist as he tries to overthrow the largest conglomerate in the entire world.
 
-* Hamilton's Pharmaceopia - An interesting docu-series about chemicals, their history, and culture hosted by Hamilton Morris. Available on HULU.
-
+* Game of Thrones - Final season. Enough said.
 
 ---
