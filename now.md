@@ -26,6 +26,8 @@ I've also been getting a good deal of trad climbing in and building up my skills
 
 It's been nearly three months since knee surgery and I am feeling great! I don't yet have full range of motion, but I am continuing to stretch and to strengthen my leg muscles through climbing, stretching, and weight-lifting. I feel so grateful to be back in the full swing of activity and look forward to being in even better shape than I was before.
 
+---
+
 ## Learning
 
 JMP scripting (JSL), Python, OSIsoft Pi, oh my! There's no shortage of new skills on the table and I am doing my best to balance it all. It is a breath of fresh air and I feel rejuvenated to be learning as much as I have been and applying it in a meaningful way. 
@@ -45,7 +47,9 @@ I'm two months into my new job and I couldn't be happier. I have a great spirit 
 
 ## What I'm
 
-### Reading
+### Reading 
+
+*see book notes for synopsis and quotes*
 
 Currently: 
 * [Animal Dreams](https://www.amazon.com/Animal-Dreams-Novel-Barbara-Kingsolver/dp/0062278509) by Barbara Kingsolver
