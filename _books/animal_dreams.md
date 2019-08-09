@@ -1,12 +1,15 @@
-# Animal Dreams
-  
+---
+title: Animal Dreams
+published: true
+---
+
 Author: Barbara Kingsolver  
 Date Read: June 2019  
-Rating: 8/10  
+Rating: 10/10  
 
 ---
 
-A book about love, loss, and life set in the American south-west. The protagonist is Codi Noline, a young woman who returns to her hometown to confront her past and care for her ailing father Doc Homer, the town Doctor. As Codi struggles with her own identity, she is challenged with fixing the town's water crisis, navigating her feelings for Loyd her long-ago boyfriend, uncovering family secrets, and being without her sister Hallie who has gone to Nicaragua to provide aid during its civil war.
+A book about love, loss, and life set in the American Southwest. The protagonist is Codi Noline, a young woman who returns to her hometown to confront her past and care for her ailing father Doc Homer, the town Doctor. As Codi struggles with her own identity, she is challenged with fixing the town's water crisis, navigating her feelings for Loyd- her long-ago boyfriend, uncovering family secrets, and being without her sister Hallie who has gone to Nicaragua to provide aid during its civil war.
 
 ---
 
