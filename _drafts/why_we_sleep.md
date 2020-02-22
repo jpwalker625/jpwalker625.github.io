@@ -22,6 +22,30 @@ Sleep pressure is dictated by the chemical **adenosine**. It accumulates through
 
 **REM** - a stage of sleep characterized by rapid eye movement in which humans principally dream.
 
-The gold standard to verify sleep requires the recording of signals, using electrodes, arising from three different regions: (1) brainwave activity, (2) eye movement activity, (3) muscle activity. These signals are collectively grouped together under the blanket term "polysomnography" meaning a readout of slee that is made up of multiple signals. 
+The gold standard to verify sleep requires the recording of signals, using electrodes, arising from three different regions: (1) brainwave activity, (2) eye movement activity, (3) muscle activity. These signals are collectively grouped together under the blanket term **polysomnography** meaning a readout of sleep that is made up of multiple signals. 
 
-The two stages of sleep, NREM and REM cycle every 90 minutes with varying proportions of each that favors NREM sleep earlier in the night and REM during the later portion of the night. 
+The two stages of sleep, NREM and REM cycle every 90 minutes with varying proportions of each that favors NREM sleep earlier in the night and REM during the later portion of the night.
+
+Author Matthew Walker theorizes that the tug-of-war between NREM and REM sleep is necessary to remodel and update the neural circuits in order to manage the finite storage capacity within our brain. Our brains must find the sweet spot between retention of old information and leaving sufficient room for the new.
+
+### How Your Brain Generates Sleep
+
+REM sleep brainwave activity is as frenetic and asynchronous as wehn you are awake. NREM on the other hand, is rhythmic and reliable.
+
+Sleep spindles occur during various stages of NREM sleep, generally on the 'downbeat' of a NREM sleep wave cycle and operate as soliders protecting the sleeper from external noises. 
+
+REM sleep has also been called paradoxical sleep since our brainwave activity reflects that of being awake yet we are sound asleep.
+
+Information Processing: wake state : reception; NREM : reflection; REM : integration
+
+## 4) Ape Beds, Dinosaurs, and Napping with Half a Brain
+
+### Who Sleeps
+
+"Nothing in biology makes sense except in light of evolution." - Theodosius Dobzhansky
+
+Considering how biologically damaging the state of wakefulness can be, Walker theorizes that that sleep was the first state of life on this planet, and it was from sleep that wakefulness emerged. So then the question is, Why did life ever bother to wake up?
+
+### One of these things is not like the other
+
+The difference in sleep time between different organisms may be linked to the relationship between the size of the nervous system, its complexity, and total body mass, With greater sleep amounts needed by those organisms with greater brain complexity relative to body size.
