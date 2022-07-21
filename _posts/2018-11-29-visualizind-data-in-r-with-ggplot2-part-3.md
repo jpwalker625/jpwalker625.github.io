@@ -16,7 +16,7 @@ published: true
 
 ## This is the final part of the series on data visualization using the popular ggplot2 package. 
 
-**For more on data viz, get an introduction to ggplot2 in [part 1](https://jpwalker625.github.io/r/visualization/visualizing-data-in-r-with-ggplot2-part-1/) or expand your knowledge in [part 2!](https://jpwalker625.github.io/r/visualization/visualizing-data-in-r-with-ggplot2-part-2/)**
+**For more on data viz, get an introduction to ggplot2 in [part 1](https://jpwalker625.github.io/r/visualization/2018/11/26/visualizing-data-in-r-with-ggplot2-part-1) or expand your knowledge in [part 2!](https://jpwalker625.github.io/r/visualization/2018/11/27/visualizing-data-in-r-with-ggplot2-part-2)**
 
 ## Part 3
 
