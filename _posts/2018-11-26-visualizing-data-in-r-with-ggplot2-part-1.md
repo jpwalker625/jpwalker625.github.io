@@ -17,7 +17,7 @@ published: true
 
 ## This is the first of a three part series on data visualization using the popular `ggplot2` package.
 
-**Check out [part 2](https://jpwalker625.github.io/r/visualization/visualizing-data-in-r-with-ggplot2-part-2) or [part 3](https://jpwalker625.github.io/r/visualization/visualizing-data-in-r-with-ggplot2-part-3) for more!**
+**Check out [part 2](https://jpwalker625.github.io/r/visualization/2018/11/27/visualizing-data-in-r-with-ggplot2-part-2) or [part 3](https://jpwalker625.github.io/r/visualization/2018/11/29/visualizind-data-in-r-with-ggplot2-part-3) for more!**
 
 ## Part 1
 
