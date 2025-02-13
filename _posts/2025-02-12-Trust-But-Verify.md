@@ -6,7 +6,7 @@ slug: Trust-But-Verify
 categories: []
 tags:
   - AI
-  - Thoughts
+  - thoughts
 ---
 As you lean on AI more and more to replace tasks, answer questions, and amplify productivity, remind yourself, "Trust but Verify". Sure, we all want technology to make our lives easier, but we must hold ourselves, and the tools we build and use accountable. 
 
