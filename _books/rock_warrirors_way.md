@@ -7,7 +7,7 @@ Rating: 9/10
 
 ---
 
-![charles_hands](/_source/Charles_Hands.jpg)
+![charles_hands](/_source/CharlesHands.jpeg)
 
 Power is the ultimate goal of the warrior.
 
