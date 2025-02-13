@@ -5,7 +5,7 @@ Case in point; over the last few days I've been brushing up on my math and codin
 As shown in the screenshot below
 3^5 % 7 = 6
 
-![chatgpt prompt](/figure/_source/chatgpt.jpeg)
+![chatgpt prompt](/_source/chatgpt.jpeg)
 
 Let's break it down:
 
