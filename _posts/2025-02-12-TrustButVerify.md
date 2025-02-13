@@ -1,4 +1,3 @@
-
 ---
 published: true
 author: JW
@@ -11,7 +10,7 @@ tags:
 ---
 As you lean on AI more and more to replace tasks, answer questions, and amplify productivity, remind yourself, "Trust but Verify". Sure, we all want technology to make our lives easier, but we must hold ourselves, and the tools we build and use accountable. 
 
-Case in point; over the last few days I've been brushing up on my math and coding skills and asked google a simple question, "How do you use modulo with exponents?" (Nerd alert, I know). Google's Search Labs | AI overview provided a detailed explanation along with an example. All good, right? Except the answer in the example was wrong. 
+Case in point; over the last few days I've been brushing up on my math and coding skills and asked google a simple question, "How do you use modulo with exponents?" (Nerd alert, I know). Google's Search Labs / AI overview provided a detailed explanation along with an example. All good, right? Except the answer in the example was wrong. 
 
 As shown in the screenshot below
 3^5 % 7 = 6
