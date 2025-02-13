@@ -1,15 +1,16 @@
 # Build settings
 remote_theme: "mmistakes/so-simple-theme@3.2.0"
 
-<<<<<<< HEAD
-=======
+
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+
 theme: jekyll-theme-so-simple
 # remote_theme: mmistakes/so-simple-theme
+
 skin: "/assets/css/skins/default.css"
 >>>>>>> upstream/master
 locale: en-US
@@ -19,18 +20,11 @@ baseurl: ""
 url: "jpwalker625.github.io"
 logo: # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
-<<<<<<< HEAD
+
 read_time: true
 words_per_minute: 150
 mathjax: true
-=======
-read_time: # reading time estimates, e.g. true
-words_per_minute: # 200
-mathjax:
-  enable: # MathJax equations, e.g. true, false (default)
-  combo:  # "tex-svg" (default), "tex-mml-chtml", etc.: docs.mathjax.org/en/latest/web/components/combined.html
-  tags:  # "none", "ams" (default), "all"
->>>>>>> upstream/master
+
 google_fonts:
   - name: "Source Sans Pro"
     weights: "400,400i,700,700i"
