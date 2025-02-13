@@ -14,8 +14,8 @@ skin: "/assets/css/skins/default.css"
 locale: en-US
 title: JPWalker
 description: A Place to Share My Thoughts
-baseurl: ""
-url: "jpwalker625.github.io"
+#baseurl: ""
+url: "https://jpwalker625.github.io"
 logo: # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
 
