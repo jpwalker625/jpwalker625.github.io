@@ -7,8 +7,6 @@ Rating: 9/10
 
 ---
 
-![charles_hands](/_source/CharlesHands.jpeg)
-
 Power is the ultimate goal of the warrior.
 
 Prioritize learning, growth, and situations that increase personal power.
@@ -171,5 +169,5 @@ Progress comes from possibility and creative thinking.
 
 **Security is a basecamp. It is not the field in which we play out the adventures of our lives.**
 
-# Choices
+![charles_hands](/_source/CharlesHands.jpeg)
 
