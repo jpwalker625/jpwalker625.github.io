@@ -2,10 +2,10 @@
 remote_theme: "mmistakes/so-simple-theme"
 
 locale: en-US
-title: Data Beta
-description: Solving Problems One Data Set At A Time.
+title: JPWalker
+description: A Place to Share My Thoughts
 baseurl: ""
-url: "https://databeta.org"
+url: "jpwalker625.github.io"
 logo: # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
 read_time: true
@@ -18,7 +18,7 @@ google_fonts:
     weights: "400,400i,700,700i"
 google_analytics: "A-108431256-1"
 disqus:
-  shortname: "databeta-org"
+  shortname: "JPWalker-org"
 twitter:
   username: # site's Twitter username, e.g. "mmistakes"
 
