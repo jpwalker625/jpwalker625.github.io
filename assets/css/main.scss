@@ -6,11 +6,9 @@ sitemap: false
 @charset "utf-8";
 
 /* red: #F03434 blue: #3d5d86 #28588D green: #317B22 */
-$base-color: #F03434
-$text-color: #000
-$accent-color: #28588D;
-$nav-color: #fff
-$nav-background-color: #000 !default;
+$text-color: #28588D
+$accent-color: #999999;
+$nav-background-color: #28588D
  
 
 @import "so-simple";
