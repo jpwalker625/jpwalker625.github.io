@@ -1,5 +1,5 @@
 # Build settings
-remote_theme: "mmistakes/so-simple-theme"
+remote_theme: "mmistakes/so-simple-theme@3.2.0"
 
 locale: en-US
 title: JPWalker
