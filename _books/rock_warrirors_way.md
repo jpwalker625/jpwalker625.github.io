@@ -169,5 +169,7 @@ Progress comes from possibility and creative thinking.
 
 **Security is a basecamp. It is not the field in which we play out the adventures of our lives.**
 
-![charles_hands](/_source/CharlesHands.jpeg)
+
+![chatgpt prompt](/_source/chatgpt.jpeg)
+
 
