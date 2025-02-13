@@ -18,7 +18,7 @@ google_fonts:
     weights: "400,400i,700,700i"
 google_analytics: "A-108431256-1"
 disqus:
-  shortname: "JPWalker-org"
+  shortname: "databeta-org"
 twitter:
   username: # site's Twitter username, e.g. "mmistakes"
 
