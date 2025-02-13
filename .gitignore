@@ -5,6 +5,7 @@ _site
 _asset_bundler_cache
 .bundle
 .DS_Store
+.jekyll-cache
 .jekyll-metadata
 .sass-cache
 *.gem
