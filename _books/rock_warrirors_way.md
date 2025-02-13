@@ -168,8 +168,3 @@ You can't give what you don't have.
 Progress comes from possibility and creative thinking. 
 
 **Security is a basecamp. It is not the field in which we play out the adventures of our lives.**
-
-
-![chatgpt prompt](/_source/chatgpt.jpeg)
-
-
