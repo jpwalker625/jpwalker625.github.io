@@ -1,15 +1,12 @@
-# Build settings
-remote_theme: "mmistakes/so-simple-theme@3.2.0"
-
-
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-theme: jekyll-theme-so-simple
-# remote_theme: mmistakes/so-simple-theme
+#theme: jekyll-theme-so-simple
+remote_theme: "mmistakes/so-simple-theme@3.2.0"
+
 skin: "/assets/css/skins/default.css"
 locale: en-US
 title: JPWalker
@@ -47,7 +44,7 @@ feed:
   path: atom.xml
 
 
-paginate: 5
+paginate: 6
 paginate_path: /page:num/
 
 # Search
@@ -76,6 +73,9 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
 
+
+#Build Settings 
+
 # Collections
 collections:
   books:
@@ -85,14 +85,15 @@ collections:
 
 # Front Matter Defaults
 defaults:
-  # Posts defaults
+# Posts defaults
   - scope:
       path: "_posts"
       type: posts
     values:
       layout: post
       share: true
-## Collection defaults
+      permalink: /:path/
+# Collection defaults
   - scope:
       path: "_books"
       type: books

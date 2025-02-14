@@ -6,6 +6,8 @@ Date Read: September 2018
 Rating: 9/10
 
 ---
+![charles Hands](/img/charleshands.jpeg)
+
 Power is the ultimate goal of the warrior.
 
 Prioritize learning, growth, and situations that increase personal power.
