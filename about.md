@@ -6,7 +6,7 @@ permalink: /about/
 
 Hi, I'm Joe. In 2018, I created this website to capture my journey into the world of data science. Since then, it's evolved into a space where I can write about my life and share my thoughts. I hope you discover something interesting while you're here. Below, you can get to know more about me, or check out what I'm up to [Now](https://jpwalker625.github.io/now/).
 
-So who am I?
+## So who am I?
 
 California native, currently living in the SF Bay Area.
 
@@ -18,12 +18,16 @@ My family and friends are most important to me.
 
 I like working with my hands - making things, home improvement, gardening, etc.
 
-Outwardly, I'm very practical, logical, and orderly. Perhaps, even shallow. Internally, I'm rather cerebral. I love philosophy and thinking about abstract ideas.
+I'm rather cerebral. I love philosophy, abstract ideas, the psyche. Though I may not seem like it as I'm very practical, logical, and orderly in my day-to-day life.
 
 I am not religious, but I resonate with the teachings of Buddhism
 
 Above all, I seek a balanced, peaceful life.
 
+**Things I love:**
+
+
+**Things I'm not so fond of:** 
 
 Some of my favorite sayings:
 * Everything in moderation, including moderation.
