@@ -16,14 +16,18 @@ I wear my heart on my sleeve, for better and worse.
 
 My family and friends are most important to me.
 
-I seek a balanced, peaceful life.
+I like working with my hands - making things, home improvement, gardening, etc.
 
-I am not religious, but I do have faith.
+Outwardly, I'm very practical, logical, and orderly. Perhaps, even shallow. Internally, I'm rather cerebral. I love philosophy and thinking about abstract ideas.
+
+I am not religious, but I resonate with the teachings of Buddhism
+
+Above all, I seek a balanced, peaceful life.
 
 
 Some of my favorite sayings:
-Everything in moderation, including moderation.
-The more you get into, the more ridiculous it gets.
+* Everything in moderation, including moderation.
+* The more you get into, the more ridiculous it gets.
 
 
 
