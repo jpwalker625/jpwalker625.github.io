@@ -3,13 +3,11 @@ title: Lists & Iterations with Purrr
 author: JW
 date: '2019-01-12'
 slug: lists-iterations-with-purrr
-categories: []
+categories:
+    - R Programming
 tags:
-  - R
-  - purrr
-  - lists
-  - iterations
-  - tidy
+  - data wrangling
+  - '2019'
 ---
 
 

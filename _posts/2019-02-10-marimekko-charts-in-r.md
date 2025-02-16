@@ -3,12 +3,11 @@ title: Marimekko Charts in R
 author: JW
 date: '2019-02-10'
 slug: marimekko-charts-in-r
-categories: []
+categories:
+  - R Programming
 tags:
-  - R
-  - ggplot2
-  - visualization
-  - marimekko
+  - data visualization
+  - '2019'
 ---
 
 

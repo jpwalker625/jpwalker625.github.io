@@ -4,12 +4,10 @@ author: JW
 date: '2018-11-29'
 slug: visualizind-data-in-r-with-ggplot2-part-3
 categories:
-  - R
-  - visualization
+  - R Programming
 tags:
-  - ggplot2
-  - tutorials
-  - visualization
+  - data visualization
+  - '2018'
 published: true
 ---
 

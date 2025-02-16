@@ -3,9 +3,10 @@ published: true
 author: JW
 date: '2022-07-21'
 slug: It's-Easy-to-Sound-Smart
-categories: []
+categories:
+ - Thoughts
 tags:
-  - thoughts
+  - '2022'
 ---
 I recently saw a post on Linkedin from a CEO who wrote about an interesting finding by a renowned academic institute followed by their own personal comments about the subject. Curious about the research, I tried finding more information on the subject but came up empty handed. I responded to the post, asking the OP if they could provide a link to the source of the research/study. Unfortunately, I never heard back from the OP and I never managed to find the original study.
 

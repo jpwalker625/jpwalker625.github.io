@@ -3,10 +3,11 @@ title: Statistical Inference
 author: JW
 date: "2019-03-10"
 slug: statistical-inference
+categories:
+  - R Programming
 tags:
-  - R
-  - statistics
-  - inference
+  - statistical inference
+  - '2019'
 ---
 
 

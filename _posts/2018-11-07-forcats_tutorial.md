@@ -1,13 +1,12 @@
 ---
 title: "An Introduction to `forcats`"
 author: JW
-tags:
-- tidy
-- factors
-- tutorials
 categories:
-- tidy
-- R
+- R Programming
+tags:
+- categorical data
+- '2018'
+
 ---
 
 

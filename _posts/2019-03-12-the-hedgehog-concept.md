@@ -3,11 +3,12 @@ title: The Hedgehog Concept
 author: JW
 date: '2019-03-12'
 slug: the-hedgehog-concept
-categories: []
+categories:
+- Business
 tags:
-  - thoughts
-  - hedgehog
-  - venn diagram
+  - data visualization
+  - podcasts
+  - '2019'
 ---
 
 
@@ -29,7 +30,7 @@ The first circle. Following one's passion is not always the best advice and does
 
 This second circle is a tricky one and I am going to elaborate on it here for a moment. Being the best in the world at something is extremely rare but there are certainly things you are good at.  Jim has another idea that many of us suffer from the curse of competence. He argues that we can be good at lots of things simply because we have an abundance of talent. Yet that doesn't mean we were meant to do them. Jim firmly believes that there are things we were born to do, genetically encoded to be great, if not the best at. These things then, are the focus of the second circle which we'll call: **what am I meant to do?** I think this is the most difficult of the circles and many if not most people don't ever figure this one out. Be careful not to get too fixated on it but don't be afraid to explore new things. And remember, just because you were born to do it doesn't mean it still won't be hard at times. Everything worth doing is difficult at one time or another.
 
-And finally, the third circle remains relatively consistent from a business standpoint. **What are people willing to pay you to do?** We all have bills to pay. Sure, I love climbing but I'm not the best climber out there and sponsors are not knocking down my door throwing free gear at me and sending me to remote destinations to climb. I wish. 
+And finally, the third circle remains relatively consistent from a business standpoint. **What are people willing to pay you to do?** We all have bills to pay. Sure, I love climbing but I'm not the best climber out there. Sponsors won't be sending me free gear any time soon. I wish! 
 
 Presumably, the sweet spot lies at where these three circles overlap. Sounds about right to me. 
 

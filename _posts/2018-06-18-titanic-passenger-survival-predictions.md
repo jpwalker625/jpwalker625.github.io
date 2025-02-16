@@ -1,13 +1,11 @@
 ---
 title: Titanic Passenger Survival Predictions
 author: JW
+categories:
+- R Programming
 tags:
 - logistic regression
-- machine leaning
-- kaggle
-categories:
-- model
-- R
+- '2018'
 ---
 
 
