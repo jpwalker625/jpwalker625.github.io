@@ -3,7 +3,7 @@ title: The Rock Warriors Way
 ---
 
 Date Read: September 2018  
-Rating: 9/10
+Rating: 4/5
 
 ---
 ![charles Hands](/img/charleshands.jpeg)

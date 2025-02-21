@@ -5,7 +5,7 @@ published: true
 
 Author: Barbara Kingsolver  
 Date Read: June 2019  
-Rating: 10/10  
+Rating: 5/5 
 
 ---
 

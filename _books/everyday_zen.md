@@ -3,7 +3,7 @@ title: Everyday Zen
 published: true
 ---
 Date Read: January 2019  
-Rating: 10/10
+Rating: 5/5
 
 --- 
 # I. Beginnings
