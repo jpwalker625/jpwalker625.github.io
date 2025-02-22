@@ -18,16 +18,22 @@ My family and friends are most important to me.
 
 I like working with my hands - making things, home improvement, gardening, etc.
 
-I'm rather cerebral. I love philosophy, abstract ideas, the psyche. Though I may not seem like it as I'm very practical, logical, and orderly in my day-to-day life.
+I'm rather cerebral. I love philosophy, abstract ideas, the psyche. Though.
 
-I am not religious, but I resonate with the teachings of Buddhism
+I'm also practical, logical, and orderly in my day-to-day life.
+
+I am more philosophical than I am religious. I resonate with the teachings of Buddhism and Stoicism. 
 
 Above all, I seek a balanced, peaceful life.
 
 **Things I love:**
-
+* coffee
+* scones
+* rock climbing
+* puppies
 
 **Things I'm not so fond of:** 
+
 
 Some of my favorite sayings:
 * Everything in moderation, including moderation.

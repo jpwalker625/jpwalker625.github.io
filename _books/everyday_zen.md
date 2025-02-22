@@ -1,7 +1,9 @@
 ---
 title: Everyday Zen
+date: '2019-01-28'
 published: true
 ---
+Author: Charlotte Jocko Beck  
 Date Read: January 2019  
 Rating: 5/5
 

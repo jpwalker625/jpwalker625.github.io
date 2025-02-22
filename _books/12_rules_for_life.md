@@ -1,7 +1,14 @@
 ---
-published: false
+title: 12 Rules For Life
+date: '2021-05-07'
+published: true
 ---
-## Date Read: May 2021
+
+Author: Jordan Petersen  
+Date Read: May 2021  
+Rating: 3/5
+
+---
 
 # Rule 1: Stand Up Straight With Your Shoulders Back
 

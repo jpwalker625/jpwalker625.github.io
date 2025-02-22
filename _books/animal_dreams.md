@@ -1,5 +1,6 @@
 ---
 title: Animal Dreams
+date: '2019-06-15'
 published: true
 ---
 

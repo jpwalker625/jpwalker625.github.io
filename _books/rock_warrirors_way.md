@@ -1,7 +1,9 @@
 ---
 title: The Rock Warriors Way
+date: '2018-09-15'
+published: true
 ---
-
+Author: Arno Ilgner  
 Date Read: September 2018  
 Rating: 4/5
 
