@@ -18,7 +18,7 @@ My family and friends are most important to me.
 
 I like working with my hands - making things, home improvement, gardening, etc.
 
-I'm rather cerebral. I love philosophy, abstract ideas, the psyche. Though.
+I'm rather cerebral. I love philosophy, abstract ideas, the psyche.
 
 I'm also practical, logical, and orderly in my day-to-day life.
 
@@ -30,15 +30,18 @@ Above all, I seek a balanced, peaceful life.
 * coffee
 * scones
 * rock climbing
-* puppies
+* animals
 
 **Things I'm not so fond of:** 
+* making the same mistake twice
+* not respecting other's time
+* lack of empathy
 
-
-Some of my favorite sayings:
+**Some of my favorite sayings:**
 * Everything in moderation, including moderation.
 * The more you get into, the more ridiculous it gets.
-
+* You have two ears and one mouth; listen twice as much as you speak.
+* Fear is the mind killer.
 
 
 
